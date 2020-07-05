@@ -1,0 +1,12 @@
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\Model.dll.config
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\Model.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\Model.pdb
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\EntityFramework.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\EntityFramework.SqlServer.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\EntityFramework.xml
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\bin\Debug\EntityFramework.SqlServer.xml
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\obj\Debug\Models.csprojAssemblyReference.cache
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\obj\Debug\Models.csproj.CoreCompileInputs.cache
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\obj\Debug\Models.csproj.CopyComplete
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\obj\Debug\Model.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\Model\obj\Debug\Model.pdb

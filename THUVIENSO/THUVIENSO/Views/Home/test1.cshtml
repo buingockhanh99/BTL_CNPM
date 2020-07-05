@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "test1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Update Imges</h2>
+<div class="form-inline">
+    Chọn hình ảnh <input type="text" name="picture" id="picture" />
+    <input type="file" name="fileUpload" accept="image/*" id="fileUpload" style="display:none" />
+    <input type="button" id="btnUpload" value="..." />
+    <hr />
+
+</div>
+
+<img id="pictureUpload" width="300" />
+@section upload{
+    <script>
+        $(function () {
+            //đăng ký sự kiện button click
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+            //Bắt sự kiện chage data của file Upload
+            $('#fileUpload').change(function () {
+                //kiểm tra trình duyệt có hỗ trợ form data không
+                if (window.FormData !== undefined)
+                {
+                    //lấy dữ liệu file upload
+                    var fileUpload = $('#fileUpload').get(0);
+                    var files = fileUpload.files;
+                    // tạo đối tượng from data
+                    var formData = new FormData();
+                    //đưa dữ liệu vào form
+                    formData.append('file', files[0]);
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Home/test1',
+                        contentType: false,//không header
+                        processData: false,//không sử lý dữ liệu
+                        data: formData,
+                        success: function (urlImages)
+                        {
+                            $('#pictureUpload').attr('src', urlImages);
+                            $('#picture').val(urlImages);
+                        },
+                        error: function (err) {
+                            alert('Có lỗi upload' + err.statusText)
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
