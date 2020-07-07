@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Antlr.Runtime;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -175,11 +176,24 @@ namespace THUVIENSO.Controllers
                          where s.accountname == accounts.accountname
                          && s.passwords == accounts.passwords
                          select s;
+           
+
             if (ketqua.Any())
             {
-
-                FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                return RedirectToAction("Index", "Home");
+                var quyen = from s in db.Accounts
+                             where s.accountname == accounts.accountname
+                             && s.passwords == accounts.passwords && s.levels ==1
+                             select s;
+                if (quyen.Any())
+                {
+                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                    return RedirectToAction("Admin", "Home");
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                    return RedirectToAction("KhachHang", "Home");
+                }
             }
             else
             {

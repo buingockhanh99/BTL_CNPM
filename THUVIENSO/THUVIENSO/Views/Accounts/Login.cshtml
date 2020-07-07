@@ -12,7 +12,7 @@
     <title>Sign Up Form by Colorlib</title>
 
     <!-- Font Icon -->
-    <link href="~/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/fonts/material-design-iconic-font.min.css")" rel="stylesheet" />
     <!-- Main css -->
     <link href="~/css/style-acc.css" rel="stylesheet" />
 </head>
@@ -34,7 +34,7 @@
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 @Html.EditorFor(model => model.accountname, new { htmlAttributes = new { @class = "form-control", @placeholder = "AccountName" } })
                                 @Html.ValidationMessageFor(model => model.accountname, "", new { @class = "text-danger" })
                             </div>
@@ -59,7 +59,7 @@
     </div>
 
     <!-- JS -->
-    <script src="~/jquery/jquery-ui.min.js"></script>
+    <script src="~/jquery/jquery.min.js"></script>
     <script src="~/jquery/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

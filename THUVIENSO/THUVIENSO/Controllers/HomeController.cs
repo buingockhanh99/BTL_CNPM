@@ -47,5 +47,19 @@ namespace THUVIENSO.Controllers
 
             return View();
         }
+        [Authorize] //check xem đã đăng nhập chưa
+        public ActionResult Admin()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        [Authorize] //check xem đã đăng nhập chưa
+        public ActionResult KhachHang()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

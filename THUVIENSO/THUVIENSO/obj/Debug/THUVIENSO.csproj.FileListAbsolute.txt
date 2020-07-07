@@ -50,7 +50,6 @@ K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\roslyn\VBCSCompiler.exe.c
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Antlr3.Runtime.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Microsoft.Web.Infrastructure.dll
-K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Model.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Newtonsoft.Json.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.Helpers.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.Mvc.dll
@@ -61,8 +60,6 @@ K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.WebPages.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.WebPages.Razor.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\WebGrease.dll
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\EntityFramework.dll
-K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Model.pdb
-K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Model.dll.config
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.Helpers.xml
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.Mvc.xml
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\System.Web.Optimization.xml
@@ -159,3 +156,5 @@ K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO - Copy\THUVIENSO\bin\Newtonsoft.Json.xm
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO - Copy\THUVIENSO\bin\Antlr3.Runtime.pdb
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO - Copy\THUVIENSO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO - Copy\THUVIENSO\obj\Debug\THUVIENSO.csproj.CopyComplete
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\EntityFramework.SqlServer.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\EntityFramework.SqlServer.xml
