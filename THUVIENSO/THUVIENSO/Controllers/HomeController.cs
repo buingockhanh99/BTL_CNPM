@@ -13,21 +13,7 @@ namespace THUVIENSO.Controllers
             return View();
         }
 
-        [Authorize] //check xem đã đăng nhập chưa
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
+  
         public ActionResult test1()
         {
             ViewBag.Message = "Your contact page.";
@@ -41,25 +27,13 @@ namespace THUVIENSO.Controllers
             file.SaveAs(Server.MapPath("~/images" + file.FileName));
             return "/images/" + file.FileName;
         }
-        public ActionResult test2()
+        public ActionResult KhoaHoc()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        [Authorize] //check xem đã đăng nhập chưa
-        public ActionResult Admin()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        [Authorize] //check xem đã đăng nhập chưa
-        public ActionResult KhachHang()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
+      
     }
 }

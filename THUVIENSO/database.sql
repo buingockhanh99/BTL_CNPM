@@ -1,15 +1,18 @@
-﻿create database THUVIENSO
+﻿create database THUVIENSO1
 
-create table Account(
-accountname varchar(max),
+create table account(
+accountname varchar(50),
 passwords varchar(max),
 id int primary key,
 levels int
 )
 
-create table Information(
+create table customer(
 id int primary key,
 username nvarchar(200),
+addres nvarchar (250),
+phonenumber char (10),
+sex varchar (3),
 CONSTRAINT FK_ID  FOREIGN KEY(id) REFERENCES account (id) 
 )
 
@@ -19,16 +22,19 @@ monney int,
 CONSTRAINT FK_ID1  FOREIGN KEY(id) REFERENCES account (id)
 )
 
-create table themebook(
+create table booktopic(
 id int primary key,
-nametheme nvarchar(200)
+nametopic nvarchar(200)
 )
 
 create table book(
-id int,
-namebook nvarchar (200),
+id int ,
+booktitle nvarchar (200),
+authorname nvarchar(100),
 content nvarchar(max),
 price int,
-CONSTRAINT FK_ID2  FOREIGN KEY(id) REFERENCES themebook (id)
+CONSTRAINT FK_ID2  FOREIGN KEY(id) REFERENCES booktopic (id)
 )
+
+
 

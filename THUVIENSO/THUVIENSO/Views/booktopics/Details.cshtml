@@ -1,4 +1,4 @@
-﻿@model THUVIENSO.Models.themebook
+﻿@model THUVIENSO.Models.booktopic
 
 @{
     Layout = null;
@@ -13,23 +13,23 @@
 </head>
 <body>
     <div>
-        <h4>themebook</h4>
+        <h4>booktopic</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.book.namebook)
+                @Html.DisplayNameFor(model => model.nametopic)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.book.namebook)
+                @Html.DisplayFor(model => model.nametopic)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.nametheme)
+                @Html.DisplayNameFor(model => model.book.booktitle)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.nametheme)
+                @Html.DisplayFor(model => model.book.booktitle)
             </dd>
     
         </dl>

@@ -4,7 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thư Viện Số</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+
     <link href="@Url.Content("~/css/index1.css")" rel="stylesheet" />
 </head>
 <body>
@@ -52,13 +61,12 @@
                 <div class="list-group">
 
                     <h1 class="list-group-item list-group-item-action active">Chủ Để</h1>
-                    @Html.ActionLink("Khoa Học", "test1", "Home", new { @class = "list-group-item list-group-item-action" })
+                    @Html.ActionLink("Khoa Học", "KhoaHoc", "Home", new { @class = "list-group-item list-group-item-action" })
                     @Html.ActionLink("Xã Hội", "test2", "Home", new { @class = "list-group-item list-group-item-action" })
                     @Html.ActionLink("Nhân Văn", "Index", "Home", new { @class = "list-group-item list-group-item-action" })
                 </div>
             </div>
-            <div class="col-lg-7"> @RenderBody()</div>
-            <div class="col-lg-3"></div>
+            <div class="col-lg-10"> @RenderBody()</div>
         </div>
     </div>
 

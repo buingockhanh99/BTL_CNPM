@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSOEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="THUVIENSOModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="accountname" ColumnName="accountname" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="levels" ColumnName="levels" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="booktopics">
+      <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
+        <MappingFragment StoreEntitySet="booktopic">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nametopic" ColumnName="nametopic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="THUVIENSOModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="addres" ColumnName="addres" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Monneys">
+      <EntityTypeMapping TypeName="THUVIENSOModel.Monney">
+        <MappingFragment StoreEntitySet="Monney">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="monney1" ColumnName="monney" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="THUVIENSOModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="authorname" ColumnName="authorname" />
+          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,4 +1,4 @@
-﻿@model THUVIENSO.Models.Account
+﻿@model THUVIENSO.Models.account
 
 @{
     Layout = null;
@@ -17,11 +17,9 @@
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
-            <h4>Account</h4>
+            <h4>account</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.id)
-    
             <div class="form-group">
                 @Html.LabelFor(model => model.accountname, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -37,6 +35,8 @@
                     @Html.ValidationMessageFor(model => model.passwords, "", new { @class = "text-danger" })
                 </div>
             </div>
+    
+            @Html.HiddenFor(model => model.id)
     
             <div class="form-group">
                 @Html.LabelFor(model => model.levels, htmlAttributes: new { @class = "control-label col-md-2" })

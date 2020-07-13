@@ -1,4 +1,4 @@
-﻿@model THUVIENSO.Models.Account
+﻿@model THUVIENSO.Models.account
 
 @{
     Layout = null;
@@ -13,25 +13,9 @@
 </head>
 <body>
     <div>
-        <h4>Account</h4>
+        <h4>account</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Information.username)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Information.username)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Monney.id)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Monney.id)
-            </dd>
-    
             <dt>
                 @Html.DisplayNameFor(model => model.accountname)
             </dt>
@@ -54,6 +38,22 @@
     
             <dd>
                 @Html.DisplayFor(model => model.levels)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.username)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.customer.username)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Monney.id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Monney.id)
             </dd>
     
         </dl>

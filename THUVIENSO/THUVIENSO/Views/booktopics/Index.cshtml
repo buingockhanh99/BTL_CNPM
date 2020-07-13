@@ -1,4 +1,4 @@
-﻿@model IEnumerable<THUVIENSO.Models.themebook>
+﻿@model IEnumerable<THUVIENSO.Models.booktopic>
 
 @{
     Layout = null;
@@ -17,22 +17,18 @@
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.book.namebook)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nametheme)
-            </th>
+            <th>Tên Chủ Đề</th>
+            <th>Số lượng sách</th>
             <th></th>
         </tr>
     
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.book.namebook)
+                @Html.DisplayFor(modelItem => item.nametopic)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nametheme)
+                @Html.DisplayFor(modelItem => item.book)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

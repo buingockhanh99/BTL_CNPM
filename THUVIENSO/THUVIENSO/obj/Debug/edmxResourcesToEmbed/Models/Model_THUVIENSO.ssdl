@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="THUVIENSOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="accountname" Type="varchar" MaxLength="50" />
+    <Property Name="passwords" Type="varchar(max)" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="levels" Type="int" />
+  </EntityType>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="booktitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="authorname" Type="nvarchar" MaxLength="100" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="booktopic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nametopic" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="200" />
+    <Property Name="addres" Type="nvarchar" MaxLength="250" />
+    <Property Name="phonenumber" Type="char" MaxLength="10" />
+    <Property Name="sex" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Monney">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="monney" Type="int" />
+  </EntityType>
+  <Association Name="FK_ID">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID1">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Monney">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID2">
+    <End Role="booktopic" Type="Self.booktopic" Multiplicity="1" />
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="booktopic">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="THUVIENSOModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="booktopic" EntityType="Self.booktopic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Monney" EntityType="Self.Monney" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ID" Association="Self.FK_ID">
+      <End Role="account" EntitySet="account" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
+      <End Role="account" EntitySet="account" />
+      <End Role="Monney" EntitySet="Monney" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID2" Association="Self.FK_ID2">
+      <End Role="booktopic" EntitySet="booktopic" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

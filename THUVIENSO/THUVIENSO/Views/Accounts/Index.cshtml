@@ -1,4 +1,4 @@
-﻿@model IEnumerable<THUVIENSO.Models.Account>
+﻿@model IEnumerable<THUVIENSO.Models.account>
 
 @{
     Layout = null;
@@ -18,12 +18,6 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Information.username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Monney.id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.accountname)
             </th>
             <th>
@@ -32,17 +26,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.levels)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monney.id)
+            </th>
             <th></th>
         </tr>
     
     @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Information.username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Monney.id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.accountname)
             </td>
@@ -51,6 +45,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.levels)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monney.id)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

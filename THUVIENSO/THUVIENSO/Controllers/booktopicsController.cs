@@ -10,112 +10,112 @@ using THUVIENSO.Models;
 
 namespace THUVIENSO.Controllers
 {
-    public class themebooksController : Controller
+    public class booktopicsController : Controller
     {
-        private THUVIENSOContext db = new THUVIENSOContext();
+        private THUVIENSOEntities db = new THUVIENSOEntities();
 
-        // GET: themebooks
+        // GET: booktopics
         public ActionResult Index()
         {
-            var themebooks = db.themebooks.Include(t => t.book);
-            return View(themebooks.ToList());
+            var booktopics = db.booktopics.Include(b => b.book);
+            return View(booktopics.ToList());
         }
 
-        // GET: themebooks/Details/5
+        // GET: booktopics/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            themebook themebook = db.themebooks.Find(id);
-            if (themebook == null)
+            booktopic booktopic = db.booktopics.Find(id);
+            if (booktopic == null)
             {
                 return HttpNotFound();
             }
-            return View(themebook);
+            return View(booktopic);
         }
 
-        // GET: themebooks/Create
+        // GET: booktopics/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.books, "id", "namebook");
+            ViewBag.id = new SelectList(db.books, "id", "booktitle");
             return View();
         }
 
-        // POST: themebooks/Create
+        // POST: booktopics/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nametheme")] themebook themebook)
+        public ActionResult Create([Bind(Include = "id,nametopic")] booktopic booktopic)
         {
             if (ModelState.IsValid)
             {
-                db.themebooks.Add(themebook);
+                db.booktopics.Add(booktopic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id = new SelectList(db.books, "id", "namebook", themebook.id);
-            return View(themebook);
+            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
+            return View(booktopic);
         }
 
-        // GET: themebooks/Edit/5
+        // GET: booktopics/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            themebook themebook = db.themebooks.Find(id);
-            if (themebook == null)
+            booktopic booktopic = db.booktopics.Find(id);
+            if (booktopic == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.books, "id", "namebook", themebook.id);
-            return View(themebook);
+            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
+            return View(booktopic);
         }
 
-        // POST: themebooks/Edit/5
+        // POST: booktopics/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nametheme")] themebook themebook)
+        public ActionResult Edit([Bind(Include = "id,nametopic")] booktopic booktopic)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(themebook).State = EntityState.Modified;
+                db.Entry(booktopic).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.books, "id", "namebook", themebook.id);
-            return View(themebook);
+            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
+            return View(booktopic);
         }
 
-        // GET: themebooks/Delete/5
+        // GET: booktopics/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            themebook themebook = db.themebooks.Find(id);
-            if (themebook == null)
+            booktopic booktopic = db.booktopics.Find(id);
+            if (booktopic == null)
             {
                 return HttpNotFound();
             }
-            return View(themebook);
+            return View(booktopic);
         }
 
-        // POST: themebooks/Delete/5
+        // POST: booktopics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            themebook themebook = db.themebooks.Find(id);
-            db.themebooks.Remove(themebook);
+            booktopic booktopic = db.booktopics.Find(id);
+            db.booktopics.Remove(booktopic);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

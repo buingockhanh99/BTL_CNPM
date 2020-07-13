@@ -1,9 +1,7 @@
-﻿using Antlr.Runtime;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,25 +11,35 @@ using THUVIENSO.Models;
 
 namespace THUVIENSO.Controllers
 {
-    public class AccountsController : Controller
+    public class accountsController : Controller
     {
-        private THUVIENSOContext db = new THUVIENSOContext();
+        private THUVIENSOEntities db = new THUVIENSOEntities();
 
-        // GET: Accounts
+        // GET: accounts
         public ActionResult Index()
         {
-            var accounts = db.Accounts.Include(a => a.Information).Include(a => a.Monney);
-            return View(accounts.ToList());
+            var list = from s in db.booktopics
+                       join x in db.books on s.id equals x.id
+                       select new
+                       {
+                           s.nametopic,
+                           x.authorname
+                       };
+            ViewBag.abc = list;
+            return View();
+                       
+         //   var accounts = db.accounts.Include(a => a.customer).Include(a => a.Monney);
+        //    return View(accounts.ToList());
         }
 
-        // GET: Accounts/Details/5
+        // GET: accounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            account account = db.accounts.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -39,56 +47,56 @@ namespace THUVIENSO.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Create
+        // GET: accounts/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.Information, "id", "username");
+            ViewBag.id = new SelectList(db.customers, "id", "username");
             ViewBag.id = new SelectList(db.Monneys, "id", "id");
             return View();
         }
 
-        // POST: Accounts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,accountname,passwords,levels")] Account account)
+        public ActionResult Create([Bind(Include = "accountname,passwords,id,levels")] account account)
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
+                db.accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id = new SelectList(db.Information, "id", "username", account.id);
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
             ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
             return View(account);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: accounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            account account = db.accounts.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.Information, "id", "username", account.id);
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
             ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
             return View(account);
         }
 
-        // POST: Accounts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,accountname,passwords,levels")] Account account)
+        public ActionResult Edit([Bind(Include = "accountname,passwords,id,levels")] account account)
         {
             if (ModelState.IsValid)
             {
@@ -96,19 +104,19 @@ namespace THUVIENSO.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.Information, "id", "username", account.id);
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
             ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
             return View(account);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: accounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            account account = db.accounts.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -116,13 +124,13 @@ namespace THUVIENSO.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            account account = db.accounts.Find(id);
+            db.accounts.Remove(account);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -136,63 +144,66 @@ namespace THUVIENSO.Controllers
             base.Dispose(disposing);
         }
 
+
+        //-----------------------------------------------------------------------------------//
         public ActionResult registration()
         {
-            ViewBag.id = new SelectList(db.Information, "id", "username");
+            ViewBag.id = new SelectList(db.customers, "id", "username");
             ViewBag.id = new SelectList(db.Monneys, "id", "id");
             return View();
         }
 
+        // POST: accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult registration([Bind(Include = "id,accountname,passwords,levels")] Account account)
+        public ActionResult registration([Bind(Include = "accountname,passwords,id,levels")] account account)
         {
             if (ModelState.IsValid)
             {
                 account.levels = 2;
-                db.Accounts.Add(account);
+                db.accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id = new SelectList(db.Information, "id", "username", account.id);
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
             ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
             return View(account);
         }
-
 
 
         public ActionResult Login()
         {
             return View();
         }
-
         public bool RememberMe { set; get; }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Account accounts)
+        public ActionResult Login(account accounts)
         {
-            var ketqua = from s in db.Accounts
+            var ketqua = from s in db.accounts
                          where s.accountname == accounts.accountname
                          && s.passwords == accounts.passwords
                          select s;
-           
+
 
             if (ketqua.Any())
             {
-                var quyen = from s in db.Accounts
-                             where s.accountname == accounts.accountname
-                             && s.passwords == accounts.passwords && s.levels ==1
-                             select s;
+                var quyen = from s in db.accounts
+                            where s.accountname == accounts.accountname
+                            && s.passwords == accounts.passwords && s.levels == 1
+                            select s;
                 if (quyen.Any())
                 {
                     FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                    return RedirectToAction("Admin", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
                     FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                    return RedirectToAction("KhachHang", "Home");
+                    return RedirectToAction("Index", "KhachHang");
                 }
             }
             else
@@ -207,5 +218,9 @@ namespace THUVIENSO.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
     }
 }

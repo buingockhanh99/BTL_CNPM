@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="THUVIENSOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="accountname" Type="varchar" MaxLength="50" />
+          <Property Name="passwords" Type="varchar(max)" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="levels" Type="int" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="booktitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="authorname" Type="nvarchar" MaxLength="100" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="booktopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nametopic" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="200" />
+          <Property Name="addres" Type="nvarchar" MaxLength="250" />
+          <Property Name="phonenumber" Type="char" MaxLength="10" />
+          <Property Name="sex" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Monney">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="monney" Type="int" />
+        </EntityType>
+        <Association Name="FK_ID">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID1">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Monney">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID2">
+          <End Role="booktopic" Type="Self.booktopic" Multiplicity="1" />
+          <End Role="book" Type="Self.book" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="booktopic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="book">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="THUVIENSOModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booktopic" EntityType="Self.booktopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monney" EntityType="Self.Monney" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ID" Association="Self.FK_ID">
+            <End Role="account" EntitySet="account" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
+            <End Role="account" EntitySet="account" />
+            <End Role="Monney" EntitySet="Monney" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID2" Association="Self.FK_ID2">
+            <End Role="booktopic" EntitySet="booktopic" />
+            <End Role="book" EntitySet="book" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="THUVIENSOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="accountname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passwords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="levels" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_ID" FromRole="account" ToRole="customer" />
+          <NavigationProperty Name="Monney" Relationship="Self.FK_ID1" FromRole="account" ToRole="Monney" />
+        </EntityType>
+        <EntityType Name="booktopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nametopic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="book" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="addres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="account" Relationship="Self.FK_ID" FromRole="customer" ToRole="account" />
+        </EntityType>
+        <EntityType Name="Monney">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="monney1" Type="Int32" />
+          <NavigationProperty Name="account" Relationship="Self.FK_ID1" FromRole="Monney" ToRole="account" />
+        </EntityType>
+        <Association Name="FK_ID">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID1">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Monney">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="THUVIENSOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="booktopics" EntityType="Self.booktopic" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="Monneys" EntityType="Self.Monney" />
+          <AssociationSet Name="FK_ID" Association="Self.FK_ID">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="Monney" EntitySet="Monneys" />
+          </AssociationSet>
+          <EntitySet Name="books" EntityType="THUVIENSOModel.book" />
+          <AssociationSet Name="FK_ID2" Association="THUVIENSOModel.FK_ID2">
+            <End Role="booktopic" EntitySet="booktopics" />
+            <End Role="book" EntitySet="books" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="booktitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="booktopic" Relationship="THUVIENSOModel.FK_ID2" FromRole="book" ToRole="booktopic" />
+        </EntityType>
+        <Association Name="FK_ID2">
+          <End Type="THUVIENSOModel.booktopic" Role="booktopic" Multiplicity="1" />
+          <End Type="THUVIENSOModel.book" Role="book" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="booktopic">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="book">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSOEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="THUVIENSOModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="accountname" ColumnName="accountname" />
+                <ScalarProperty Name="passwords" ColumnName="passwords" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="levels" ColumnName="levels" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="booktopics">
+            <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
+              <MappingFragment StoreEntitySet="booktopic">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nametopic" ColumnName="nametopic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="THUVIENSOModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="addres" ColumnName="addres" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monneys">
+            <EntityTypeMapping TypeName="THUVIENSOModel.Monney">
+              <MappingFragment StoreEntitySet="Monney">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="monney1" ColumnName="monney" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="THUVIENSOModel.book">
+              <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="authorname" ColumnName="authorname" />
+                <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -60,6 +60,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,23 +131,45 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\accountsController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\booksController.cs" />
+    <Compile Include="Controllers\booktopicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\themebooksController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\book.cs" />
-    <Compile Include="Models\Information.cs" />
-    <Compile Include="Models\Mapping\AccountMap.cs" />
-    <Compile Include="Models\Mapping\bookMap.cs" />
-    <Compile Include="Models\Mapping\InformationMap.cs" />
-    <Compile Include="Models\Mapping\MonneyMap.cs" />
-    <Compile Include="Models\Mapping\themebookMap.cs" />
-    <Compile Include="Models\Monney.cs" />
-    <Compile Include="Models\themebook.cs" />
-    <Compile Include="Models\THUVIENSOContext.cs" />
+    <Compile Include="Models\account.cs">
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\book.cs">
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\booktopic.cs">
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\customer.cs">
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_THUVIENSO.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_THUVIENSO.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_THUVIENSO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_THUVIENSO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monney.cs">
+      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +235,7 @@
     <Content Include="images\1.png" />
     <Content Include="images\3.jpg" />
     <Content Include="images\bg.jpg" />
+    <Content Include="images\book\1.jpg" />
     <Content Include="images\img_header.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\signin-image.jpg" />
@@ -223,6 +248,16 @@
     <Content Include="jquery\jquery-ui.min.js" />
     <Content Include="jquery\jquery.min.js" />
     <Content Include="jquery\main.js" />
+    <Content Include="Models\Model_THUVIENSO.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+      <LastGenOutput>Model_THUVIENSO.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model_THUVIENSO.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+      <LastGenOutput>Model_THUVIENSO.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\css\material-dashboard.css.map" />
@@ -391,6 +426,13 @@
     <Content Include="assets\scss\material-dashboard\_tooltip.scss" />
     <Content Include="assets\scss\material-dashboard\_type.scss" />
     <Content Include="assets\scss\material-dashboard\_variables.scss" />
+    <EntityDeploy Include="Models\Model_THUVIENSO.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_THUVIENSO.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model_THUVIENSO.edmx.diagram">
+      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -413,25 +455,32 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Accounts\Create.cshtml" />
-    <Content Include="Views\Accounts\Delete.cshtml" />
-    <Content Include="Views\Accounts\Details.cshtml" />
-    <Content Include="Views\Accounts\Edit.cshtml" />
-    <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\Accounts\Login.cshtml" />
-    <Content Include="Views\Accounts\registration.cshtml" />
     <Content Include="Views\Home\test1.cshtml" />
-    <Content Include="Views\Home\test2.cshtml" />
-    <Content Include="Views\themebooks\Create.cshtml" />
-    <Content Include="Views\themebooks\Delete.cshtml" />
-    <Content Include="Views\themebooks\Details.cshtml" />
-    <Content Include="Views\themebooks\Edit.cshtml" />
-    <Content Include="Views\themebooks\Index.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Home\KhachHang.cshtml" />
-    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
+    <Content Include="Views\Home\KhoaHoc.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\accounts\Create.cshtml" />
+    <Content Include="Views\accounts\Delete.cshtml" />
+    <Content Include="Views\accounts\Details.cshtml" />
+    <Content Include="Views\accounts\Edit.cshtml" />
+    <Content Include="Views\accounts\Index.cshtml" />
+    <Content Include="Views\accounts\registration.cshtml" />
+    <Content Include="Views\accounts\Login.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\booktopics\Create.cshtml" />
+    <Content Include="Views\booktopics\Delete.cshtml" />
+    <Content Include="Views\booktopics\Details.cshtml" />
+    <Content Include="Views\booktopics\Edit.cshtml" />
+    <Content Include="Views\booktopics\Index.cshtml" />
+    <Content Include="Views\Admin\InsertChuDe.cshtml" />
+    <Content Include="Views\books\Create.cshtml" />
+    <Content Include="Views\books\Delete.cshtml" />
+    <Content Include="Views\books\Details.cshtml" />
+    <Content Include="Views\books\Edit.cshtml" />
+    <Content Include="Views\books\Index.cshtml" />
+    <Content Include="Views\Admin\InsertBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -448,6 +497,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
