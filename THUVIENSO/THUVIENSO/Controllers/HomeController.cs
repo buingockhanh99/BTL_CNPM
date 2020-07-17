@@ -35,12 +35,7 @@ namespace THUVIENSO.Controllers
         }
 
 
-        public ActionResult test2()
-        {
-          
-
-            return View();
-        }
+        
 
 
     }
