@@ -476,7 +476,6 @@
     <Content Include="Views\Admin\InsertChuDe.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\InsertBook.cshtml" />
-    <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\books\Create.cshtml" />
     <Content Include="Views\books\Delete.cshtml" />
     <Content Include="Views\books\Details.cshtml" />
