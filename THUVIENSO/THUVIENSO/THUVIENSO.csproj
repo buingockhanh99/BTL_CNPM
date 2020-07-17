@@ -224,6 +224,7 @@
     <Content Include="css\font-awesome_dk.css" />
     <Content Include="css\index1.css" />
     <Content Include="css\material-design-iconic-font.css" />
+    <Content Include="css\slidecss.css" />
     <Content Include="css\style-acc.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style_dk.css" />
@@ -482,11 +483,13 @@
     <Content Include="Views\books\Edit.cshtml" />
     <Content Include="Views\books\Index.cshtml" />
     <Content Include="Views\Admin\ListBook.cshtml" />
+    <Content Include="Views\Home\test2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="PDF\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

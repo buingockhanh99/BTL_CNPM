@@ -71,7 +71,6 @@ K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Newtonsoft.Json.xml
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Antlr3.Runtime.pdb
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\EntityFramework.xml
-K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.csprojAssemblyReference.cache
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.csproj.CoreCompileInputs.cache
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.csproj.CopyComplete
 K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.dll
