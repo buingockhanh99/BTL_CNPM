@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'K:\Cong_Nghe_Phan_Mem\sao_luu_btl\THUVIENSO\THUVIENSO\Models\Model_THUVIENSO.edmx'. 
+﻿// T4 code generation is enabled for model 'K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\Models\THUVIENSO_MODEL.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

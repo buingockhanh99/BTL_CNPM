@@ -13,10 +13,10 @@ namespace THUVIENSO.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class THUVIENSOEntities : DbContext
+    public partial class THUVIENSO_Entities : DbContext
     {
-        public THUVIENSOEntities()
-            : base("name=THUVIENSOEntities")
+        public THUVIENSO_Entities()
+            : base("name=THUVIENSO_Entities")
         {
         }
     

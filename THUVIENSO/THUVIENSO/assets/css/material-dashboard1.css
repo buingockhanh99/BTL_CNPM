@@ -13636,8 +13636,6 @@ textarea {
 }
 
 .form-group input[type=file] {
-  opacity: 0;
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

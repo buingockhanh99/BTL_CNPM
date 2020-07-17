@@ -17,6 +17,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="nametopic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="books" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
   </EntityType>
   <EntityType Name="customer">
     <Key>
@@ -61,7 +62,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="THUVIENSOEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="THUVIENSO_Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="accounts" EntityType="Self.account" />
     <EntitySet Name="booktopics" EntityType="Self.booktopic" />
     <EntitySet Name="customers" EntityType="Self.customer" />
@@ -74,5 +75,35 @@
       <End Role="account" EntitySet="accounts" />
       <End Role="Monney" EntitySet="Monneys" />
     </AssociationSet>
+    <EntitySet Name="books" EntityType="THUVIENSOModel.book" />
+    <AssociationSet Name="FK_ID2" Association="THUVIENSOModel.FK_ID2">
+      <End Role="booktopic" EntitySet="booktopics" />
+      <End Role="book" EntitySet="books" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="idbook" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idbook" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="booktitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DataContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <NavigationProperty Name="booktopic" Relationship="THUVIENSOModel.FK_ID2" FromRole="book" ToRole="booktopic" />
+  </EntityType>
+  <Association Name="FK_ID2">
+    <End Type="THUVIENSOModel.booktopic" Role="booktopic" Multiplicity="1" />
+    <End Type="THUVIENSOModel.book" Role="book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booktopic">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

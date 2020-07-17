@@ -12,7 +12,7 @@ namespace THUVIENSO.Controllers
 {
     public class booksController : Controller
     {
-        private THUVIENSOEntities db = new THUVIENSOEntities();
+        private THUVIENSO_Entities db = new THUVIENSO_Entities();
 
         // GET: books
         public ActionResult Index()
@@ -48,7 +48,7 @@ namespace THUVIENSO.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,booktitle,authorname,content,price")] book book)
+        public ActionResult Create([Bind(Include = "id,idbook,booktitle,authorname,img,DataContent,price")] book book)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace THUVIENSO.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,booktitle,authorname,content,price")] book book)
+        public ActionResult Edit([Bind(Include = "id,idbook,booktitle,authorname,img,DataContent,price")] book book)
         {
             if (ModelState.IsValid)
             {

@@ -29,6 +29,14 @@
             </div>
     
             <div class="form-group">
+                @Html.LabelFor(model => model.idbook, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.idbook, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.idbook, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
                 @Html.LabelFor(model => model.booktitle, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.booktitle, new { htmlAttributes = new { @class = "form-control" } })
@@ -45,10 +53,18 @@
             </div>
     
             <div class="form-group">
-                @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataContent, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataContent, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataContent, "", new { @class = "text-danger" })
                 </div>
             </div>
     

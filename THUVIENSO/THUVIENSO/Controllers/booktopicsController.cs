@@ -12,12 +12,12 @@ namespace THUVIENSO.Controllers
 {
     public class booktopicsController : Controller
     {
-        private THUVIENSOEntities db = new THUVIENSOEntities();
+        private THUVIENSO_Entities db = new THUVIENSO_Entities();
 
         // GET: booktopics
         public ActionResult Index()
         {
-            var booktopics = db.booktopics.Include(b => b.book);
+            var booktopics = db.booktopics.Include(b => b.books);
             return View(booktopics.ToList());
         }
 

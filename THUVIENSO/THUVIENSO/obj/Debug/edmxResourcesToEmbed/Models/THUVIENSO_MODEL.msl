@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSOEntities">
+  <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSO_Entities">
     <EntitySetMapping Name="accounts">
       <EntityTypeMapping TypeName="THUVIENSOModel.account">
         <MappingFragment StoreEntitySet="account">
@@ -35,6 +35,19 @@
         <MappingFragment StoreEntitySet="Monney">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="monney1" ColumnName="monney" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="THUVIENSOModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="DataContent" ColumnName="DataContent" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="authorname" ColumnName="authorname" />
+          <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+          <ScalarProperty Name="idbook" ColumnName="idbook" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

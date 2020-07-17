@@ -6,19 +6,19 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using THUVIENSO.Models;
+using System.IO;
 
 namespace THUVIENSO.Controllers
 {
     [Authorize] //check xem đã đăng nhập chưa
     public class AdminController : Controller
     {
-        private THUVIENSOEntities db = new THUVIENSOEntities();
+        private THUVIENSO_Entities db = new THUVIENSO_Entities();
         // GET: Admin
         public ActionResult Index()
         {
             var books = db.books.Include(b => b.booktopic);
             return View(books.ToList());
-           
         }
 
 
@@ -48,30 +48,52 @@ namespace THUVIENSO.Controllers
             return View(booktopic);
         }
 
-
+        [HttpGet]
         public ActionResult InsertBook()
         {
             ViewBag.id = new SelectList(db.booktopics, "id", "nametopic");
             return View();
         }
 
-        // POST: books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertBook([Bind(Include = "id,booktitle,authorname,content,price")] book book)
+        public ActionResult InsertBook(book model)
         {
             if (ModelState.IsValid)
             {
-                db.books.Add(book);
+                //insert Images
+                string imgfileName = Path.GetFileNameWithoutExtension(model.imgfile.FileName);
+                string extension = Path.GetExtension(model.imgfile.FileName);
+                imgfileName = imgfileName + DateTime.Now.ToString("yymmssff") + extension;
+                model.img = "~/Image/" + imgfileName;
+                imgfileName = Path.Combine(Server.MapPath("~/Image"), imgfileName);
+                model.imgfile.SaveAs(imgfileName);
+
+                //imgData
+                string DatafileName = Path.GetFileNameWithoutExtension(model.datafile.FileName);
+                string Dataextension = Path.GetExtension(model.datafile.FileName);
+                DatafileName = DatafileName + DateTime.Now.ToString("yymmssff") + Dataextension;
+                model.DataContent = "~/PDF/" + DatafileName;
+                DatafileName = Path.Combine(Server.MapPath("~/PDF"), DatafileName);
+                model.datafile.SaveAs(DatafileName);
+
+                db.books.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListBook");
             }
 
-            ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", book.id);
-            return View(book);
+            ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", model.id);
+            return View(model);
         }
+
+        public ActionResult ListBook()
+        {
+            var books = db.books.Include(b => b.booktopic);
+            return View(books.ToList());
+        }
+
+
 
     }
 }

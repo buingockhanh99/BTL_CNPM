@@ -16,12 +16,14 @@
         </EntityType>
         <EntityType Name="book">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idbook" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idbook" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="booktitle" Type="nvarchar" MaxLength="200" />
           <Property Name="authorname" Type="nvarchar" MaxLength="100" />
-          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="img" Type="varchar(max)" />
+          <Property Name="DataContent" Type="varchar(max)" />
           <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="booktopic">
@@ -74,7 +76,7 @@
         </Association>
         <Association Name="FK_ID2">
           <End Role="booktopic" Type="Self.booktopic" Multiplicity="1" />
-          <End Role="book" Type="Self.book" Multiplicity="0..1" />
+          <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="booktopic">
               <PropertyRef Name="id" />
@@ -124,7 +126,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="nametopic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="book" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
+          <NavigationProperty Name="books" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -169,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="THUVIENSOEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="THUVIENSO_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="accounts" EntityType="Self.account" />
           <EntitySet Name="booktopics" EntityType="Self.booktopic" />
           <EntitySet Name="customers" EntityType="Self.customer" />
@@ -190,18 +192,20 @@
         </EntityContainer>
         <EntityType Name="book">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idbook" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idbook" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="booktitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="authorname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="price" Type="Int32" />
           <NavigationProperty Name="booktopic" Relationship="THUVIENSOModel.FK_ID2" FromRole="book" ToRole="booktopic" />
         </EntityType>
         <Association Name="FK_ID2">
           <End Type="THUVIENSOModel.booktopic" Role="booktopic" Multiplicity="1" />
-          <End Type="THUVIENSOModel.book" Role="book" Multiplicity="0..1" />
+          <End Type="THUVIENSOModel.book" Role="book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="booktopic">
               <PropertyRef Name="id" />
@@ -216,7 +220,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSOEntities">
+        <EntityContainerMapping StorageEntityContainer="THUVIENSOModelStoreContainer" CdmEntityContainer="THUVIENSO_Entities">
           <EntitySetMapping Name="accounts">
             <EntityTypeMapping TypeName="THUVIENSOModel.account">
               <MappingFragment StoreEntitySet="account">
@@ -258,9 +262,11 @@
             <EntityTypeMapping TypeName="THUVIENSOModel.book">
               <MappingFragment StoreEntitySet="book">
                 <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="DataContent" ColumnName="DataContent" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="authorname" ColumnName="authorname" />
                 <ScalarProperty Name="booktitle" ColumnName="booktitle" />
+                <ScalarProperty Name="idbook" ColumnName="idbook" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

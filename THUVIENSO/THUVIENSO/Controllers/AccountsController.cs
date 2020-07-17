@@ -13,7 +13,7 @@ namespace THUVIENSO.Controllers
 {
     public class accountsController : Controller
     {
-        private THUVIENSOEntities db = new THUVIENSOEntities();
+        private THUVIENSO_Entities db = new THUVIENSO_Entities();
 
         // GET: accounts
         public ActionResult Index()

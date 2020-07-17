@@ -141,40 +141,40 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\account.cs">
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\book.cs">
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\booktopic.cs">
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\customer.cs">
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_THUVIENSO.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_THUVIENSO.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_THUVIENSO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_THUVIENSO.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Monney.cs">
-      <DependentUpon>Model_THUVIENSO.tt</DependentUpon>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THUVIENSO_MODEL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>THUVIENSO_MODEL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THUVIENSO_MODEL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THUVIENSO_MODEL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>THUVIENSO_MODEL.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\material-dashboard-rtl.css" />
-    <Content Include="assets\css\material-dashboard.css" />
+    <Content Include="assets\css\material-dashboard1.css" />
     <Content Include="assets\css\material-dashboard.min.css" />
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
@@ -248,15 +248,15 @@
     <Content Include="jquery\jquery-ui.min.js" />
     <Content Include="jquery\jquery.min.js" />
     <Content Include="jquery\main.js" />
-    <Content Include="Models\Model_THUVIENSO.Context.tt">
+    <Content Include="Models\THUVIENSO_MODEL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
-      <LastGenOutput>Model_THUVIENSO.Context.cs</LastGenOutput>
+      <DependentUpon>THUVIENSO_MODEL.edmx</DependentUpon>
+      <LastGenOutput>THUVIENSO_MODEL.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model_THUVIENSO.tt">
+    <Content Include="Models\THUVIENSO_MODEL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
-      <LastGenOutput>Model_THUVIENSO.cs</LastGenOutput>
+      <DependentUpon>THUVIENSO_MODEL.edmx</DependentUpon>
+      <LastGenOutput>THUVIENSO_MODEL.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -426,12 +426,12 @@
     <Content Include="assets\scss\material-dashboard\_tooltip.scss" />
     <Content Include="assets\scss\material-dashboard\_type.scss" />
     <Content Include="assets\scss\material-dashboard\_variables.scss" />
-    <EntityDeploy Include="Models\Model_THUVIENSO.edmx">
+    <EntityDeploy Include="Models\THUVIENSO_MODEL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_THUVIENSO.Designer.cs</LastGenOutput>
+      <LastGenOutput>THUVIENSO_MODEL.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model_THUVIENSO.edmx.diagram">
-      <DependentUpon>Model_THUVIENSO.edmx</DependentUpon>
+    <Content Include="Models\THUVIENSO_MODEL.edmx.diagram">
+      <DependentUpon>THUVIENSO_MODEL.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -467,7 +467,6 @@
     <Content Include="Views\accounts\Index.cshtml" />
     <Content Include="Views\accounts\registration.cshtml" />
     <Content Include="Views\accounts\Login.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\booktopics\Create.cshtml" />
     <Content Include="Views\booktopics\Delete.cshtml" />
@@ -475,15 +474,20 @@
     <Content Include="Views\booktopics\Edit.cshtml" />
     <Content Include="Views\booktopics\Index.cshtml" />
     <Content Include="Views\Admin\InsertChuDe.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\InsertBook.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\books\Create.cshtml" />
     <Content Include="Views\books\Delete.cshtml" />
     <Content Include="Views\books\Details.cshtml" />
     <Content Include="Views\books\Edit.cshtml" />
     <Content Include="Views\books\Index.cshtml" />
-    <Content Include="Views\Admin\InsertBook.cshtml" />
+    <Content Include="Views\Admin\ListBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
+    <Folder Include="PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

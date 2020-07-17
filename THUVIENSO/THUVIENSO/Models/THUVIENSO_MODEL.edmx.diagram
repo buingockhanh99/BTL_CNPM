@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cc636f7720f04a4ca5c013573889770f" Name="Diagram1">
+      <Diagram DiagramId="b043f2b549634f18ab32952f0b6ad361" Name="Diagram1">
         <EntityTypeShape EntityType="THUVIENSOModel.account" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="THUVIENSOModel.booktopic" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="THUVIENSOModel.booktopic" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="THUVIENSOModel.customer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="THUVIENSOModel.Monney" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="THUVIENSOModel.FK_ID" ManuallyRouted="false" />
         <AssociationConnector Association="THUVIENSOModel.FK_ID1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="THUVIENSOModel.book" Width="1.5" PointX="8" PointY="4.5" />
+        <EntityTypeShape EntityType="THUVIENSOModel.book" Width="1.5" PointX="8" PointY="0.875" />
         <AssociationConnector Association="THUVIENSOModel.FK_ID2" />
       </Diagram>
     </edmx:Diagrams>

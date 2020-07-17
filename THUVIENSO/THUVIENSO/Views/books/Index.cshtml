@@ -24,7 +24,10 @@
                 @Html.DisplayNameFor(model => model.authorname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.content)
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataContent)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.price)
@@ -44,7 +47,10 @@
                 @Html.DisplayFor(modelItem => item.authorname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.content)
+                @Html.DisplayFor(modelItem => item.img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataContent)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.price)
@@ -53,9 +59,9 @@
                 @Html.DisplayFor(modelItem => item.booktopic.nametopic)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                @Html.ActionLink("Edit", "Edit", new { id=item.idbook }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idbook }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idbook })
             </td>
         </tr>
     }

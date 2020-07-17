@@ -9,16 +9,18 @@
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="levels" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'THUVIENSO1.dbo.book' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="book">
-          <Property Name="id" Type="int" />
-          <Property Name="booktitle" Type="nvarchar" MaxLength="200" />
-          <Property Name="authorname" Type="nvarchar" MaxLength="100" />
-          <Property Name="img" Type="varchar(max)" />
-          <Property Name="datacontent" Type="nvarchar(max)" />
-          <Property Name="price" Type="int" />
-        </EntityType>-->
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="idbook" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idbook" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booktitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="authorname" Type="nvarchar" MaxLength="100" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="DataContent" Type="varchar(max)" />
+    <Property Name="price" Type="int" />
+  </EntityType>
   <EntityType Name="booktopic">
     <Key>
       <PropertyRef Name="id" />
@@ -67,11 +69,21 @@ warning 6013: The table/view 'THUVIENSO1.dbo.book' does not have a primary key d
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-error 6004: The table 'THUVIENSO1.dbo.book' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ID2" />-->
+  <Association Name="FK_ID2">
+    <End Role="booktopic" Type="Self.booktopic" Multiplicity="1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booktopic">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="THUVIENSOModelStoreContainer">
     <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="booktopic" EntityType="Self.booktopic" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Monney" EntityType="Self.Monney" Schema="dbo" store:Type="Tables" />
@@ -82,6 +94,10 @@ error 6004: The table 'THUVIENSO1.dbo.book' is referenced by a relationship, but
     <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
       <End Role="account" EntitySet="account" />
       <End Role="Monney" EntitySet="Monney" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID2" Association="Self.FK_ID2">
+      <End Role="booktopic" EntitySet="booktopic" />
+      <End Role="book" EntitySet="book" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

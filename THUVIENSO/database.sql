@@ -1,4 +1,7 @@
-﻿create database THUVIENSO1
+﻿create database THUVIENSO
+go
+use THUVIENSO
+go
 
 create table account(
 accountname varchar(50),
@@ -6,6 +9,7 @@ passwords varchar(max),
 id int primary key,
 levels int
 )
+
 
 create table customer(
 id int primary key,
@@ -28,13 +32,16 @@ nametopic nvarchar(200)
 )
 
 create table book(
-id int ,
+id int not null ,
+idbook int IDENTITY (1,1) primary key,
 booktitle nvarchar (200),
 authorname nvarchar(100),
-content nvarchar(max),
+img varchar(max),
+DataContent varchar(max),
 price int,
 CONSTRAINT FK_ID2  FOREIGN KEY(id) REFERENCES booktopic (id)
 )
 
 
-
+select * from book
+insert into account values ('admin','123456','1','1')
