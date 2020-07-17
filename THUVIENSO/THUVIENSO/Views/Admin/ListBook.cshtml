@@ -34,37 +34,45 @@
                Chủ Đề
             </th>
             <th></th>
+
+            <th>Download</th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.booktitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.authorname)
-                </td>
-                <td>
-                    <img src="@Url.Content(item.img)" alt="Alternate Text" style="height:150px;width:110px" />
-                  
-                </td>
-                <td>
-                    <a href="@Url.Content(item.DataContent)">Xem</a>
-                  
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.booktopic.nametopic)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idbook }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.idbook }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idbook })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.booktitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.authorname)
+        </td>
+        <td>
+            <img src="@Url.Content(item.img)" alt="Alternate Text" style="height:150px;width:110px" />
+
+        </td>
+        <td>
+            <a href="@Url.Content(item.DataContent)" target="_blank">Xem</a>
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.booktopic.nametopic)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idbook }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idbook }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idbook })
+        </td>
+
+        <td>
+            <a href="@Url.Content(item.DataContent)" download="">Click here</a>
+
+        </td>
+
+    </tr>
         }
 
     </table>
