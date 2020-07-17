@@ -33,7 +33,13 @@ namespace THUVIENSO.Controllers
 
             return View();
         }
-       
-      
+
+        public ActionResult test3()
+        {
+           
+            return View();
+        }
+
+
     }
 }
