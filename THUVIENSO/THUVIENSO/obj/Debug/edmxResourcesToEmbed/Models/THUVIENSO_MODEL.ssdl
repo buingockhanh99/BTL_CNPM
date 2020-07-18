@@ -25,7 +25,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nametopic" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="customer">

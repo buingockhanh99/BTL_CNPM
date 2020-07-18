@@ -17,8 +17,7 @@ namespace THUVIENSO.Controllers
         // GET: booktopics
         public ActionResult Index()
         {
-            var booktopics = db.booktopics.Include(b => b.books);
-            return View(booktopics.ToList());
+            return View(db.booktopics.ToList());
         }
 
         // GET: booktopics/Details/5
@@ -39,7 +38,6 @@ namespace THUVIENSO.Controllers
         // GET: booktopics/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.books, "id", "booktitle");
             return View();
         }
 
@@ -54,11 +52,11 @@ namespace THUVIENSO.Controllers
             {
                 db.booktopics.Add(booktopic);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.Clear();
+                return View();
             }
 
-            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
-            return View(booktopic);
+            return View();
         }
 
         // GET: booktopics/Edit/5
@@ -73,7 +71,6 @@ namespace THUVIENSO.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
             return View(booktopic);
         }
 
@@ -90,7 +87,6 @@ namespace THUVIENSO.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
             return View(booktopic);
         }
 

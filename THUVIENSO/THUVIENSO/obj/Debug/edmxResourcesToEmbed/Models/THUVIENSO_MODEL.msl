@@ -11,14 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="booktopics">
-      <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
-        <MappingFragment StoreEntitySet="booktopic">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="nametopic" ColumnName="nametopic" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="customers">
       <EntityTypeMapping TypeName="THUVIENSOModel.customer">
         <MappingFragment StoreEntitySet="customer">
@@ -47,6 +39,14 @@
           <ScalarProperty Name="authorname" ColumnName="authorname" />
           <ScalarProperty Name="booktitle" ColumnName="booktitle" />
           <ScalarProperty Name="idbook" ColumnName="idbook" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="booktopics">
+      <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
+        <MappingFragment StoreEntitySet="booktopic">
+          <ScalarProperty Name="nametopic" ColumnName="nametopic" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

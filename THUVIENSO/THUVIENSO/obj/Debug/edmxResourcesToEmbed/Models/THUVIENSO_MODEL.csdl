@@ -11,14 +11,6 @@
     <NavigationProperty Name="customer" Relationship="Self.FK_ID" FromRole="account" ToRole="customer" />
     <NavigationProperty Name="Monney" Relationship="Self.FK_ID1" FromRole="account" ToRole="Monney" />
   </EntityType>
-  <EntityType Name="booktopic">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="nametopic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="books" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
-  </EntityType>
   <EntityType Name="customer">
     <Key>
       <PropertyRef Name="id" />
@@ -64,7 +56,6 @@
   </Association>
   <EntityContainer Name="THUVIENSO_Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="accounts" EntityType="Self.account" />
-    <EntitySet Name="booktopics" EntityType="Self.booktopic" />
     <EntitySet Name="customers" EntityType="Self.customer" />
     <EntitySet Name="Monneys" EntityType="Self.Monney" />
     <AssociationSet Name="FK_ID" Association="Self.FK_ID">
@@ -76,6 +67,7 @@
       <End Role="Monney" EntitySet="Monneys" />
     </AssociationSet>
     <EntitySet Name="books" EntityType="THUVIENSOModel.book" />
+    <EntitySet Name="booktopics" EntityType="THUVIENSOModel.booktopic" />
     <AssociationSet Name="FK_ID2" Association="THUVIENSOModel.FK_ID2">
       <End Role="booktopic" EntitySet="booktopics" />
       <End Role="book" EntitySet="books" />
@@ -93,6 +85,14 @@
     <Property Name="DataContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="price" Type="Int32" />
     <NavigationProperty Name="booktopic" Relationship="THUVIENSOModel.FK_ID2" FromRole="book" ToRole="booktopic" />
+  </EntityType>
+  <EntityType Name="booktopic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nametopic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="books" Relationship="THUVIENSOModel.FK_ID2" FromRole="booktopic" ToRole="book" />
   </EntityType>
   <Association Name="FK_ID2">
     <End Type="THUVIENSOModel.booktopic" Role="booktopic" Multiplicity="1" />

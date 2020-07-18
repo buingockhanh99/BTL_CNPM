@@ -26,9 +26,9 @@ namespace THUVIENSO.Models
         }
     
         public virtual DbSet<account> accounts { get; set; }
-        public virtual DbSet<booktopic> booktopics { get; set; }
         public virtual DbSet<customer> customers { get; set; }
         public virtual DbSet<Monney> Monneys { get; set; }
         public virtual DbSet<book> books { get; set; }
+        public virtual DbSet<booktopic> booktopics { get; set; }
     }
 }

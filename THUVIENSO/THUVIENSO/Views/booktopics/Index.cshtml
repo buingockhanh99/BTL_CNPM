@@ -17,8 +17,9 @@
     </p>
     <table class="table">
         <tr>
-            <th>Tên Chủ Đề</th>
-            <th>Số lượng sách</th>
+            <th>
+                @Html.DisplayNameFor(model => model.nametopic)
+            </th>
             <th></th>
         </tr>
     
@@ -26,9 +27,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.nametopic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.book)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

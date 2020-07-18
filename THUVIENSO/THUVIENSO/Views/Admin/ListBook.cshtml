@@ -14,33 +14,24 @@
 <body>
    
     <table class="table table-bordered table-hover">
-        <tr>
-            <th>
-                Tên Sách
-            </th>
-            <th>
-               Tên Tác Giả
-            </th>
-            <th>
-               Ảnh
-            </th>
-            <th>
-               Xem
-            </th>
-            <th>
-               Giá
-            </th>
-            <th>
-               Chủ Đề
-            </th>
-            <th></th>
+        <tr>     
+            <th>Chủ Đề</th>
+            <th>Tên Sách</th>
+            <th>Tên Tác Giả</th>
+            <th>Ảnh</th>
+            <th>Xem</th>
+            <th>Giá</th>
+            <th>Delete</th>
 
-            <th>Download</th>
+
         </tr>
-
         @foreach (var item in Model)
         {
     <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.booktopic.nametopic)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.booktitle)
         </td>
@@ -48,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.authorname)
         </td>
         <td>
-            <img src="@Url.Content(item.img)" alt="Alternate Text" style="height:150px;width:110px" />
+            <img src="@Url.Content(item.img)" alt="Alternate Text" style="height:120px;width:90px" />
 
         </td>
         <td>
@@ -59,22 +50,12 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.booktopic.nametopic)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.idbook }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idbook }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.idbook })
         </td>
-
-        <td>
-            <a href="@Url.Content(item.DataContent)" download="">Click here</a>
-
-        </td>
-
     </tr>
+    
         }
-
+         
     </table>
 </body>
 </html>

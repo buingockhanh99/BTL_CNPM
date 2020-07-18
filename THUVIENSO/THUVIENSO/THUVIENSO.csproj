@@ -495,10 +495,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\test1.cshtml" />
     <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
-    <Content Include="Views\Home\KhoaHoc.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\accounts\Create.cshtml" />
     <Content Include="Views\accounts\Delete.cshtml" />
@@ -508,11 +506,6 @@
     <Content Include="Views\accounts\registration.cshtml" />
     <Content Include="Views\accounts\Login.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\booktopics\Create.cshtml" />
-    <Content Include="Views\booktopics\Delete.cshtml" />
-    <Content Include="Views\booktopics\Details.cshtml" />
-    <Content Include="Views\booktopics\Edit.cshtml" />
-    <Content Include="Views\booktopics\Index.cshtml" />
     <Content Include="Views\Admin\InsertChuDe.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\InsertBook.cshtml" />
@@ -522,6 +515,14 @@
     <Content Include="Views\books\Edit.cshtml" />
     <Content Include="Views\books\Index.cshtml" />
     <Content Include="Views\Admin\ListBook.cshtml" />
+    <Content Include="Views\booktopics\Create.cshtml" />
+    <Content Include="Views\booktopics\Delete.cshtml" />
+    <Content Include="Views\booktopics\Details.cshtml" />
+    <Content Include="Views\booktopics\Edit.cshtml" />
+    <Content Include="Views\booktopics\Index.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ViewBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

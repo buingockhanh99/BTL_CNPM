@@ -36,16 +36,16 @@ namespace THUVIENSO.Controllers
         public ActionResult InsertChuDe([Bind(Include = "id,nametopic")] booktopic booktopic)
         {
             if (ModelState.IsValid)
-            {
+            {  
                 db.booktopics.Add(booktopic);
                 db.SaveChanges();
                 ViewBag.message = "Thêm thành công";
-                return View();
-                // return RedirectToAction("Index");
+                ModelState.Clear();
+                return View();  
             }
 
-            ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
-            return View(booktopic);
+          //  ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
+            return View();
         }
 
         [HttpGet]
@@ -78,13 +78,15 @@ namespace THUVIENSO.Controllers
                 DatafileName = Path.Combine(Server.MapPath("~/PDF"), DatafileName);
                 model.datafile.SaveAs(DatafileName);
 
+                model.price = 100000;
                 db.books.Add(model);
                 db.SaveChanges();
+                ViewBag.message = "Thêm thành sách công";
                 return RedirectToAction("ListBook");
             }
 
             ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", model.id);
-            return View(model);
+            return View();
         }
 
         public ActionResult ListBook()
@@ -93,6 +95,39 @@ namespace THUVIENSO.Controllers
             return View(books.ToList());
         }
 
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            book book = db.books.Find(id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        // POST: books/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            book book = db.books.Find(id);
+            db.books.Remove(book);
+            db.SaveChanges();
+            return RedirectToAction("ListBook");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
 
     }

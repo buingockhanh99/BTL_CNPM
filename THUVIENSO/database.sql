@@ -27,7 +27,7 @@ CONSTRAINT FK_ID1  FOREIGN KEY(id) REFERENCES account (id)
 )
 
 create table booktopic(
-id int primary key,
+id int IDENTITY (1,1)  primary key,
 nametopic nvarchar(200)
 )
 

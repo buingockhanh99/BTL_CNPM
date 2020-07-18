@@ -1,84 +1,202 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Viện Số</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="@Url.Content("~/css/index1.css")" rel="stylesheet" />
+    <title>Thư viện số</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Traveling HTML5 Template" />
+    <meta name="author" content="Design Hooks" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <link href="~/Content/lightslider.css" rel="stylesheet" />
+
 </head>
-<body>
-    <header>
-        <div class="wrapper" style="height:60px">
-        </div>
+<body class="home" id="page">
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
 
+                <div></div>
+                <nav class="site-nav">
+                    <ul class="clean-list site-links">
+                        <li class="nav-item">
+                            <a href="#">Được yêu thích</a>
+                        </li>
+                        <li>
+                            <a href="#">Đọc nhiều nhất</a>
+                        </li>
+                        <li>
+                            <a href="#">Tải về nhiều nhất</a>
+                        </li>
+                        <li>
+                            <a href="#">Mới được update</a>
+                        </li>
 
-        <div class="wrapper">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="~/images/slideshow1.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/images/slideshow2.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/images/slideshow3.png" alt="Third slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/images/slideshow4.jpg" alt="For slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                    </ul>
+                    @Html.ActionLink("Đăng xuất", "Logout", "accounts", null, new { @class = "btn btn-outlined" })
+                </nav>
             </div>
         </div>
     </header>
-    <div style="height:50px"></div>
 
-    <div class="container-fluid " style="width:80%">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="list-group">
+    <!-- Main Cont2ent -->
+    <div class="content-box">
+        <!-- Hero Section -->
+        <section class="section section-hero">
+            <div class="hero-box">
+                <div class="container">
+                    <div class="hero-text align-center" data-text="Thư viện trực tuyến">
+                        <h1>Thư viện trực tuyến</h1>
+                        <p>Đọc sách mọi lúc mọi nơi</p>
+                    </div>
 
-                    <h1 class="list-group-item list-group-item-action active">Chủ Để</h1>
-                    @Html.ActionLink("Khoa Học", "test1", "Home", new { @class = "list-group-item list-group-item-action" })
-                    @Html.ActionLink("Xã Hội", "test2", "Home", new { @class = "list-group-item list-group-item-action" })
-                    @Html.ActionLink("Nhân Văn", "Index", "Home", new { @class = "list-group-item list-group-item-action" })
+                    <form class="destinations-form">
+                        <div class="input-line">
+                            <input type="text" name="destination" value="" class="form-input check-value" placeholder="Tên sách, Chủ đề, Tên tác giả . . ." />
+                            <button type="button" name="destination-submit" class="form-submit btn btn-special">Tìm kiếm</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-7"> @RenderBody()</div>
-            <div class="col-lg-3"></div>
+
+            <!-- Statistics Box -->
+            <div class="container">
+                <div class="statistics-box">
+                    <div class="statistics-item">
+                        <span class="value">2,300</span>
+                        <p class="title">Đầu sách</p>
+                    </div>
+
+                    <div class="statistics-item">
+                        <span class="value">200+</span>
+                        <p class="title">Chủ đề</p>
+                    </div>
+
+                    <div class="statistics-item">
+                        <span class="value">35,000</span>
+                        <p class="title">Lượt truy cập</p>
+                    </div>
+
+                    <div class="statistics-item">
+                        <span class="value">20,000</span>
+                        <p class="title">Đánh giá</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5" id="dmc">
+                    <div class="dmc1">
+                        <div class="dmc">
+                            <h3>DANH MỤC CHÍNH</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Sách văn học</a></li>
+                            <li><a href="#">Sách triết học</a></li>
+                            <li><a href="#">Sách lịch sử</a></li>
+                            <li><a href="#">Sách doanh nhân</a></li>
+                            <li><a href="#">Truyện trinh thám</a></li>
+                            <li><a href="#">Truyện tiểu thuyết</a></li>
+                            <li><a href="#">Truyện ngắn sưu tầm</a></li>
+                            <li><a href="#">Truyện ngắn sưu tầm</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-7" id="noidung">
+                    <div class="noidung1">
+                        <h3>SÁCH MỚI TRONG TUẦN</h3>
+                        <hr size="5" ; color="black" />
+                    </div>
+
+
+                    @RenderBody()
+                </div>
+            </div>
         </div>
+
+        <div class="container" id="listpt">
+            <div class="col-md-6"></div>
+            <div class="col-md-18">
+
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="widget widget_links">
+                        <h5 class="widget-title">Bùi Ngọc Khánh</h5>
+                        <p>Ngày sinh: 18/10/1999</p>
+                        <p>Số điện thoại: 0368699895</p>
+                        <p>Địa chỉ: Yên Bái</p>
+                    </div>
+                </div>
 
+                <div class="col-md-5">
+                    <div class="widget widget_links">
+                        <h5 class="widget-title">Đặng Thị Trang</h5>
+                        <p>Ngày sinh: 08/07/1999</p>
+                        <p>Số điện thoại: 0981013897</p>
+                        <p>Địa chỉ: Nam Định</p>
+                    </div>
+                </div>
 
+                <div class="col-md-5">
+                    <div class="widget widget_links">
+                        <h5 class="widget-title">Lê Quang Huy</h5>
+                        <p>Ngày sinh: 08/10/1999</p>
+                        <p>Số điện thoại: 0969608810</p>
+                        <p>Địa chỉ:  Hải Dương</p>
+                    </div>
+                </div>
 
+                <div class="col-md-9">
 
+                    <div class="widget widget_social">
+                        <h5 class="widget-title">Subscribe to our newsletter</h5>
+                        <form class="subscribe-form">
+                            <div class="input-line">
+                                <input type="text" name="subscribe-email" value="" placeholder="Your email address" />
+                            </div>
+                            <button type="button" name="subscribe-submit" class="btn btn-special no-icon">Subscribe</button>
+                        </form>
 
-    <hr />
-    <footer style="text-align:center">
-
-        <p>&copy; @DateTime.Now.Year - <b>Thư viện Trường Đại học Thủy Lợi :</b> Tòa nhà A45 - 175 Tây Sơn - Đống Đa - Hà Nội   </p>
-        <p><b>Điện thoại : </b>0368699895     <b>Email : </b> khanhbn72@wru.vn</p>
+                        <ul class="clean-list social-block">
+                            <li>
+                                <a href="#"><i class="icon-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-google-plus"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
+    <script src="~/Scripts/JQuery3.3.1.js"></script>
+    <script src="~/Scripts/lightslider.js"></script>
+    <!-- Scripts -->
+    <script src="~/Scripts/scrips.js"></script>
+    @Scripts.Render("~/template/js")
 
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    @RenderSection("upload", required: false)
 </body>
 </html>
