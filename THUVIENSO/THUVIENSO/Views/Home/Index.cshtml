@@ -9,11 +9,17 @@
 @foreach (var item in Model)
 {
     <ul>
-        <li>
-            <img src="@Url.Content(item.img)" height="150" width="120" />
-            <span>@item.booktitle</span>
-            <button>Tải xuống </button>
-        </li>
+        <a href="@Url.Content(item.DataContent)" target="_blank">
+            <li>
+                <img src="@Url.Content(item.img)" height="150" width="120" style="padding-right:10px" />
+                <div style="height:80px; ">
+                    <span style="font-family:Arial">@item.booktitle</span>
+                    <p style="font-size:12px;font-family:Arial">@item.authorname</p>
+                </div>
+                <a href="@Url.Content(item.DataContent)" download><button id="btn11" class="btn btn-outline-success">Tải xuống</button></a>
+                
+            </li>
+        </a>
     </ul>
 
 }

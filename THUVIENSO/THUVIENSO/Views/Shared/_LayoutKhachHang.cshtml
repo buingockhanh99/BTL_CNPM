@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <link href="~/Content/css/screen4.css" rel="stylesheet" />
     <link href="~/Content/lightslider.css" rel="stylesheet" />
 
 </head>
@@ -23,7 +23,7 @@
                 <nav class="site-nav">
                     <ul class="clean-list site-links">
                         <li class="nav-item">
-                            <a href="#">Được yêu thích</a>
+                            <a href="#duocyeuthich">Được yêu thích</a>
                         </li>
                         <li>
                             <a href="#">Đọc nhiều nhất</a>
@@ -52,13 +52,15 @@
                         <h1>Thư viện trực tuyến</h1>
                         <p>Đọc sách mọi lúc mọi nơi</p>
                     </div>
-
-                    <form class="destinations-form">
-                        <div class="input-line">
-                            <input type="text" name="destination" value="" class="form-input check-value" placeholder="Tên sách, Chủ đề, Tên tác giả . . ." />
-                            <button type="button" name="destination-submit" class="form-submit btn btn-special">Tìm kiếm</button>
+                    @using (Html.BeginForm("Search_Results", "Home", FormMethod.Post))
+                    {
+                        <div class="destinations-form">
+                            <div class="input-line">
+                                <input type="text" name="booktitle" value="" class="form-input check-value" placeholder="Tên sách, Chủ đề, Tên tác giả . . ." />
+                                <button type="submit" name="destination-submit" class="form-submit btn btn-special">Tìm kiếm</button>
+                            </div>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
 
@@ -89,49 +91,69 @@
         </section>
 
         <!-------------------------------------------------------------------->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5" id="dmc">
-                    <div class="dmc1">
-                        <div class="dmc">
-                            <h3>DANH MỤC CHÍNH</h3>
+
+        <div id="noidung3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5" id="dmc">
+                        <div class="dmc1">
+                            <div class="dmc">
+                                <h3 style="">CHỦ ĐỀ CHÍNH</h3>
+                            </div>
+                            <ul>
+                                @{ THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
+                                    var name = from s in db.booktopics
+                                               select s;
+                                }
+                                @foreach (var item in name)
+                                {
+                                    <li>@Html.ActionLink(item.nametopic, "ViewBook", new { id = item.id })</li>
+                                }
+
+                            </ul>
                         </div>
-                        <ul>
-                            <li><a href="#">Sách văn học</a></li>
-                            <li><a href="#">Sách triết học</a></li>
-                            <li><a href="#">Sách lịch sử</a></li>
-                            <li><a href="#">Sách doanh nhân</a></li>
-                            <li><a href="#">Truyện trinh thám</a></li>
-                            <li><a href="#">Truyện tiểu thuyết</a></li>
-                            <li><a href="#">Truyện ngắn sưu tầm</a></li>
-                            <li><a href="#">Truyện ngắn sưu tầm</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-7" id="noidung">
-                    <div class="noidung1">
-                        <h3>SÁCH MỚI TRONG TUẦN</h3>
-                        <hr size="5" ; color="black" />
                     </div>
 
+                    <div class="col-lg-19" id="noidung">
+                        <div class="noidung1" style="height:15px">
 
-                    @RenderBody()
+
+                        </div>
+                        @RenderBody()
+                    </div>
+
                 </div>
             </div>
+
         </div>
 
-        <div class="container" id="listpt">
+         <div class="container listpt" id="duocyeuthich">
             <div class="col-md-6"></div>
             <div class="col-md-18">
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
 
                 <div class="box">
                     <img src="~/Content/img/anh1.jpg" />
                 </div>
 
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
 
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
             </div>
         </div>
+
+
+
 
     </div>
     <!-- Footer -->
@@ -197,6 +219,9 @@
     <!-- Scripts -->
     <script src="~/Scripts/scrips.js"></script>
     @Scripts.Render("~/template/js")
+
+
+
 
 </body>
 </html>

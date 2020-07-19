@@ -21,32 +21,26 @@ namespace THUVIENSO.Controllers
             return View(books.ToList());
         }
 
-  
-        public ActionResult test1()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public string ProcessUpload(HttpPostedFileBase file)
-        {
-            //xử lý upload
-            file.SaveAs(Server.MapPath("~/images" + file.FileName));
-            return "/images/" + file.FileName;
-        }
         
-        public ActionResult test3()
-        {
-           
-            return View();
-        }
 
-        public ActionResult ViewBook()
+        public ActionResult ViewBook(int? id)
         {
-            var books = db.books.Include(b => b.booktopic);
+            var select = from s in db.books
+                         where s.id == id
+                         select s;
+            return View(select.ToList());
+        }
+        [HttpPost]
+        public ActionResult Search_Results(book model)
+        {
+            /*  var select = from s in db.books
+                            where s.booktitle == searchString && s.authorname == searchString
+                            select s;*/
+          
+            var books = db.books.Where(b => b.booktitle.Contains(model.booktitle));
             return View(books.ToList());
         }
+
 
 
 

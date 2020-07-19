@@ -221,7 +221,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\fonts\icomoon.svg" />
-    <Content Include="Content\css\screen.css" />
+    <Content Include="Content\css\screen4.css" />
     <Content Include="Content\img\1431_new.jpg" />
     <Content Include="Content\img\1494_new.png" />
     <Content Include="Content\img\38327-interior-view-of-the-state-library-of-victoria-with-bookcases-and-people-sitting-at-desks___ornate-library-with-books-and-people.jpg" />
@@ -495,7 +495,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\test1.cshtml" />
     <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\accounts\Create.cshtml" />
@@ -505,7 +504,6 @@
     <Content Include="Views\accounts\Index.cshtml" />
     <Content Include="Views\accounts\registration.cshtml" />
     <Content Include="Views\accounts\Login.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\Admin\InsertChuDe.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\InsertBook.cshtml" />
@@ -523,12 +521,16 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ViewBook.cshtml" />
+    <Content Include="Views\Home\test3.cshtml" />
+    <Content Include="Views\Home\Search_Results.cshtml" />
+    <Content Include="Views\KhachHang\ViewBook.cshtml" />
+    <Content Include="Views\KhachHang\Search_Results.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="PDF\" />
-    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -43,5 +43,5 @@ CONSTRAINT FK_ID2  FOREIGN KEY(id) REFERENCES booktopic (id)
 )
 
 
-select * from book
+
 insert into account values ('admin','123456','1','1')
