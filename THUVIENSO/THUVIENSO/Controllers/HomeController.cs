@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using THUVIENSO.Models;
-using System.IO;
-
 
 namespace THUVIENSO.Controllers
 {
@@ -40,6 +40,96 @@ namespace THUVIENSO.Controllers
             var books = db.books.Where(b => b.booktitle.Contains(model.booktitle));
             return View(books.ToList());
         }
+
+
+        //-----------------------------------------------------------------------------------//
+        public ActionResult registration()
+        {
+            return View();
+        }
+
+        // POST: accounts/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult registration(taikhoan_customer model)
+        {
+            if (ModelState.IsValid)
+            {
+                account ac = new account();
+                ac.accountname = model.accountname;
+                ac.passwords = model.passwords;
+                ac.id = model.id;
+                ac.levels = 2;
+                db.accounts.Add(ac);
+              
+
+                customer cs = new customer();
+                cs.id = model.id;
+                cs.username = model.username;
+                cs.addres = model.addres;
+                cs.phonenumber = model.phonenumber;
+                cs.sex = model.sex;
+                db.customers.Add(cs);
+
+                db.SaveChanges();
+
+
+
+                return RedirectToAction("Login");
+            }
+
+            
+            return View();
+        }
+
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public bool RememberMe { set; get; }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(account accounts)
+        {
+            var ketqua = from s in db.accounts
+                         where s.accountname == accounts.accountname
+                         && s.passwords == accounts.passwords
+                         select s;
+
+
+            if (ketqua.Any())
+            {
+                var quyen = from s in db.accounts
+                            where s.accountname == accounts.accountname
+                            && s.passwords == accounts.passwords && s.levels == 1
+                            select s;
+                if (quyen.Any())
+                {
+                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                    return RedirectToAction("Index", "KhachHang");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+            }
+            return View(accounts);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
 
 
 

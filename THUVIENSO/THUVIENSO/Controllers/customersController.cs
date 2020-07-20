@@ -10,116 +10,112 @@ using THUVIENSO.Models;
 
 namespace THUVIENSO.Controllers
 {
-    public class accountsController : Controller
+    public class customersController : Controller
     {
         private THUVIENSO_Entities db = new THUVIENSO_Entities();
 
-        // GET: accounts
+        // GET: customers
         public ActionResult Index()
         {
-            var accounts = db.accounts.Include(a => a.customer).Include(a => a.Monney);
-            return View(accounts.ToList());
+            var customers = db.customers.Include(c => c.account);
+            return View(customers.ToList());
         }
 
-        // GET: accounts/Details/5
+        // GET: customers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            account account = db.accounts.Find(id);
-            if (account == null)
+            customer customer = db.customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(customer);
         }
 
-        // GET: accounts/Create
+        // GET: customers/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.customers, "id", "username");
-            ViewBag.id = new SelectList(db.Monneys, "id", "id");
+            ViewBag.id = new SelectList(db.accounts, "id", "accountname");
             return View();
         }
 
-        // POST: accounts/Create
+        // POST: customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "accountname,passwords,id,levels")] account account)
+        public ActionResult Create([Bind(Include = "id,username,addres,phonenumber,sex")] customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.accounts.Add(account);
+                db.customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
-            ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
-            return View(account);
+            ViewBag.id = new SelectList(db.accounts, "id", "accountname", customer.id);
+            return View(customer);
         }
 
-        // GET: accounts/Edit/5
+        // GET: customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            account account = db.accounts.Find(id);
-            if (account == null)
+            customer customer = db.customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
-            ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
-            return View(account);
+            ViewBag.id = new SelectList(db.accounts, "id", "accountname", customer.id);
+            return View(customer);
         }
 
-        // POST: accounts/Edit/5
+        // POST: customers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "accountname,passwords,id,levels")] account account)
+        public ActionResult Edit([Bind(Include = "id,username,addres,phonenumber,sex")] customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
-            ViewBag.id = new SelectList(db.Monneys, "id", "id", account.id);
-            return View(account);
+            ViewBag.id = new SelectList(db.accounts, "id", "accountname", customer.id);
+            return View(customer);
         }
 
-        // GET: accounts/Delete/5
+        // GET: customers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            account account = db.accounts.Find(id);
-            if (account == null)
+            customer customer = db.customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(customer);
         }
 
-        // POST: accounts/Delete/5
+        // POST: customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            account account = db.accounts.Find(id);
-            db.accounts.Remove(account);
+            customer customer = db.customers.Find(id);
+            db.customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

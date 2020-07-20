@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\booksController.cs" />
     <Compile Include="Controllers\booktopicsController.cs" />
+    <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,6 +156,7 @@
     <Compile Include="Models\Monney.cs">
       <DependentUpon>THUVIENSO_MODEL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\taikhoan_customer.cs" />
     <Compile Include="Models\THUVIENSO_MODEL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -497,13 +499,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\accounts\Create.cshtml" />
-    <Content Include="Views\accounts\Delete.cshtml" />
-    <Content Include="Views\accounts\Details.cshtml" />
-    <Content Include="Views\accounts\Edit.cshtml" />
-    <Content Include="Views\accounts\Index.cshtml" />
-    <Content Include="Views\accounts\registration.cshtml" />
-    <Content Include="Views\accounts\Login.cshtml" />
     <Content Include="Views\Admin\InsertChuDe.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\InsertBook.cshtml" />
@@ -521,11 +516,22 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ViewBook.cshtml" />
-    <Content Include="Views\Home\test3.cshtml" />
     <Content Include="Views\Home\Search_Results.cshtml" />
     <Content Include="Views\KhachHang\ViewBook.cshtml" />
     <Content Include="Views\KhachHang\Search_Results.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\Home\registration.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\accounts\Create.cshtml" />
+    <Content Include="Views\accounts\Delete.cshtml" />
+    <Content Include="Views\accounts\Details.cshtml" />
+    <Content Include="Views\accounts\Edit.cshtml" />
+    <Content Include="Views\accounts\Index.cshtml" />
+    <Content Include="Views\customers\Create.cshtml" />
+    <Content Include="Views\customers\Delete.cshtml" />
+    <Content Include="Views\customers\Details.cshtml" />
+    <Content Include="Views\customers\Edit.cshtml" />
+    <Content Include="Views\customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
