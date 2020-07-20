@@ -44,7 +44,7 @@
 
                             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             <div class="form-group">
-                                <label for="name"><i class="far fa-address-card"></i></label>
+                                <label for="name"><i class="fas fa-user"></i></label>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ và Tên" } })
                                     @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name"><i class="far fa-address-card"></i></label>
+                                <label for="name"><i class="fas fa-map-marked-alt"></i></label>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.addres, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ" } })
                                     @Html.ValidationMessageFor(model => model.addres, "", new { @class = "text-danger" })
@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name"><i class="far fa-address-card"></i></label>
+                                <label for="name"><i class="fas fa-phone"></i></label>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại" } })
                                     @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
@@ -68,22 +68,27 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name"><i class="far fa-address-card"></i></label>
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sex, new { htmlAttributes = new { @class = "form-control", @placeholder = "Giới tính" } })
+                                <label for="name"><i class="fas fa-venus-mars">Giới tính</i></label>
+                                <div class="col-md-10" style="margin-left:100px">
+                                    <select name="sex" class="form-control">
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    </select>
+
                                     @Html.ValidationMessageFor(model => model.sex, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
-
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                            </div>
+                            <div class="form-group" style="color:red">
+                                @ViewBag.message
                             </div>
                         }
                     </div>
                     <div class="signup-image">
                         <figure><img src="~/images/signup-image.jpg" alt="sing up image"></figure>
-                        @Html.ActionLink("I am already member", "Login", "Home")
+                        @Html.ActionLink("Đăng nhập", "Login", "Home")
                     </div>
                 </div>
             </div>

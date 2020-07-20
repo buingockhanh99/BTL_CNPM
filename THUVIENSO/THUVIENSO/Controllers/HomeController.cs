@@ -57,27 +57,43 @@ namespace THUVIENSO.Controllers
         {
             if (ModelState.IsValid)
             {
-                account ac = new account();
-                ac.accountname = model.accountname;
-                ac.passwords = model.passwords;
-                ac.id = model.id;
-                ac.levels = 2;
-                db.accounts.Add(ac);
-              
+                var accname = from s in db.accounts
+                              where s.accountname == model.accountname
+                              select s;
+                var checkid = from s in db.accounts
+                              where s.id == model.id
+                              select s;
+                if (accname.Any())
+                {
+                    ViewBag.message = "Tên tài khoản đã có người dùng";
+                }
+                else if (checkid.Any())
+                {
+                    ViewBag.message = "CMND bị trùng";
+                }
+                else
+                {
+                    account ac = new account();
+                    ac.accountname = model.accountname;
+                    ac.passwords = model.passwords;
+                    ac.id = model.id;
+                    ac.levels = 2;
+                    db.accounts.Add(ac);
 
-                customer cs = new customer();
-                cs.id = model.id;
-                cs.username = model.username;
-                cs.addres = model.addres;
-                cs.phonenumber = model.phonenumber;
-                cs.sex = model.sex;
-                db.customers.Add(cs);
 
-                db.SaveChanges();
+                    customer cs = new customer();
+                    cs.id = model.id;
+                    cs.username = model.username;
+                    cs.addres = model.addres;
+                    cs.phonenumber = model.phonenumber;
+                    cs.sex = model.sex;
+                    db.customers.Add(cs);
 
+                    db.SaveChanges();
 
-
-                return RedirectToAction("Login");
+                    ViewBag.message = "Tạo tài khoản thành công";
+                    return View();
+                }
             }
 
             

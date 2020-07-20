@@ -39,6 +39,7 @@ namespace THUVIENSO.Controllers
             {  
                 db.booktopics.Add(booktopic);
                 db.SaveChanges();
+               
                 ViewBag.message = "Thêm thành công";
                 ModelState.Clear();
                 return View();  
