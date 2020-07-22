@@ -252,6 +252,7 @@
     <Content Include="images\3.jpg" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\book\1.jpg" />
+    <Content Include="images\images.png" />
     <Content Include="images\img_header.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\signin-image.jpg" />
