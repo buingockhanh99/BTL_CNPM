@@ -1,0 +1,43 @@
+﻿@model THUVIENSO.Models.account
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Bạn chắc chắn muốn xóa tài khoản này</h3>
+    <div>
+        <table class="table">
+            <tr>
+                <th width="150px">Tên tài khoản: </th>
+                <td>@Html.DisplayFor(model => model.accountname)</td>
+            </tr>
+            <tr>
+                <th>Tên khách hàng: </th>
+                <td>@Html.DisplayFor(model => model.customer.username)</td>
+            </tr>
+            <tr>
+                <th>Số CMND: </th>
+                <td>@Html.DisplayFor(model => model.id)</td>
+            </tr>
+        </table>
+      
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

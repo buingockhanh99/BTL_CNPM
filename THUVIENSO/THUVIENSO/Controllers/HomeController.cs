@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -75,7 +77,16 @@ namespace THUVIENSO.Controllers
                 {
                     account ac = new account();
                     ac.accountname = model.accountname;
-                    ac.passwords = model.passwords;
+                    //mã hóa mật khẩu
+                    MD5 md5 = System.Security.Cryptography.MD5.Create();
+                    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(model.passwords);
+                    byte[] hashBytes = md5.ComputeHash(inputBytes);
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < hashBytes.Length; i++)
+                    {
+                        sb.Append(hashBytes[i].ToString("X2"));
+                    }
+                    ac.passwords = sb.ToString();
                     ac.id = model.id;
                     ac.levels = 2;
                     db.accounts.Add(ac);
@@ -88,6 +99,11 @@ namespace THUVIENSO.Controllers
                     cs.phonenumber = model.phonenumber;
                     cs.sex = model.sex;
                     db.customers.Add(cs);
+
+                    Monney mn = new Monney();
+                    mn.id = model.id;
+                    mn.monney1 = 0;
+                    db.Monneys.Add(mn);
 
                     db.SaveChanges();
 
@@ -110,6 +126,17 @@ namespace THUVIENSO.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(account accounts)
         {
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(accounts.passwords);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                sb.Append(hashBytes[i].ToString("X2"));
+            }
+
+            accounts.passwords = sb.ToString();
+
             var ketqua = from s in db.accounts
                          where s.accountname == accounts.accountname
                          && s.passwords == accounts.passwords

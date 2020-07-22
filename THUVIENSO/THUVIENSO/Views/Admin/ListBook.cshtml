@@ -9,11 +9,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    
 </head>
 <body>
    
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" style="text-align:center">
         <tr>     
             <th>Chủ Đề</th>
             <th>Tên Sách</th>
@@ -22,6 +23,7 @@
             <th>Xem</th>
             <th>Giá</th>
             <th>Delete</th>
+            <th>Update</th>
 
 
         </tr>
@@ -50,12 +52,17 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.idbook })
+            <a href="Delete/@item.idbook"><i class="fas fa-trash-alt"></i></a>
+        </td>
+        <td>
+            <a href="Editbook/@item.idbook"><i class="fas fa-edit"></i></a>
         </td>
     </tr>
     
         }
          
     </table>
+    <div style="text-align:center;"><i class="fas fa-plus"></i> @Html.ActionLink("Thêm Sách", "InsertBook", "Admin")</div>
+   
 </body>
 </html>

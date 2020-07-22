@@ -131,7 +131,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\accountsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\booksController.cs" />
     <Compile Include="Controllers\booktopicsController.cs" />
@@ -522,16 +521,13 @@
     <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\Home\registration.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\accounts\Create.cshtml" />
-    <Content Include="Views\accounts\Delete.cshtml" />
-    <Content Include="Views\accounts\Details.cshtml" />
-    <Content Include="Views\accounts\Edit.cshtml" />
-    <Content Include="Views\accounts\Index.cshtml" />
     <Content Include="Views\customers\Create.cshtml" />
     <Content Include="Views\customers\Delete.cshtml" />
     <Content Include="Views\customers\Details.cshtml" />
     <Content Include="Views\customers\Edit.cshtml" />
     <Content Include="Views\customers\Index.cshtml" />
+    <Content Include="Views\Admin\Deletea.cshtml" />
+    <Content Include="Views\Admin\Editbook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,10 +17,10 @@ namespace THUVIENSO.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var books = db.books.Include(b => b.booktopic);
-            return View(books.ToList());
+            var accounts = db.accounts.Include(a => a.customer).Include(a => a.Monney).Where(a => a.levels ==2);
+            return View(accounts.ToList());
         }
-
+     
 
         public ActionResult InsertChuDe()
         {
@@ -82,7 +82,7 @@ namespace THUVIENSO.Controllers
                 model.price = 100000;
                 db.books.Add(model);
                 db.SaveChanges();
-                ViewBag.message = "Thêm thành sách công";
+                
                 return RedirectToAction("ListBook");
             }
 
@@ -129,6 +129,83 @@ namespace THUVIENSO.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        ///////////////////////////////////////////////////
+        ///// GET: customers/Delete/5
+        public ActionResult Deletea(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            account account = db.accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+        // POST: accounts/Delete/5
+        [HttpPost, ActionName("Deletea")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirme(int id)
+        {
+            account account = db.accounts.Find(id);
+            customer customer = db.customers.Find(id);
+            db.customers.Remove(customer);
+            db.accounts.Remove(account);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // GET: books/Edit/5
+        public ActionResult Editbook(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            book book = db.books.Find(id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", book.id);
+            return View(book);
+        }
+
+        // POST: books/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editbook( book model)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                //imgData
+                string DatafileName = Path.GetFileNameWithoutExtension(model.datafile.FileName);
+                string Dataextension = Path.GetExtension(model.datafile.FileName);
+                DatafileName = DatafileName + DateTime.Now.ToString("yymmssff") + Dataextension;
+                model.DataContent = "~/PDF/" + DatafileName;
+                DatafileName = Path.Combine(Server.MapPath("~/PDF"), DatafileName);
+                model.datafile.SaveAs(DatafileName);
+
+              
+
+
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+              //  ViewBag.message = "Thêm thành sách công";
+                return RedirectToAction("ListBook"); 
+            }
+            ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", model.id);
+            return View(model);
+        }
+
 
 
     }

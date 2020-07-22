@@ -1,20 +1,49 @@
-﻿@model IEnumerable<THUVIENSO.Models.book>
+﻿@model IEnumerable<THUVIENSO.Models.account>
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
+   
+    <table class="table table-bordered table-hover" style="text-align:center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.accountname)
+            </th>           
+            <th>
+                @Html.DisplayNameFor(model => model.customer.username)
+            </th>
+            <th>CMND</th>
+            <th>Xóa</th>
+        </tr>
 
-    Chào
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accountname)
+                </td>             
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    <a href="Deletea/@item.id"><i class="fas fa-trash-alt"></i></a>
+               
+                </td>
+            </tr>
+        }
 
+    </table>
 </body>
 </html>
