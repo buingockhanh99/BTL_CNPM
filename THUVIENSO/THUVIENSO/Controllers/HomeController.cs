@@ -20,7 +20,10 @@ namespace THUVIENSO.Controllers
 
         
         private THUVIENSO_Entities db = new THUVIENSO_Entities();
-
+        public ActionResult test()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             var books = db.books.Include(b => b.booktopic);
@@ -58,7 +61,7 @@ namespace THUVIENSO.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-      
+       
         public ActionResult registration(taikhoan_customer model)
         {
             if (ModelState.IsValid)
@@ -124,47 +127,52 @@ namespace THUVIENSO.Controllers
             return View();
         }
         public bool RememberMe { set; get; }
+
         [HttpPost]
-       
+      
         public ActionResult Login(account accounts)
         {
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(accounts.passwords);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hashBytes.Length; i++)
+            if (ModelState.IsValid)
             {
-                sb.Append(hashBytes[i].ToString("X2"));
-            }
-
-            accounts.passwords = sb.ToString();
-
-            var ketqua = from s in db.accounts
-                         where s.accountname == accounts.accountname
-                         && s.passwords == accounts.passwords
-                         select s;
-
-
-            if (ketqua.Any())
-            {
-                var quyen = from s in db.accounts
-                            where s.accountname == accounts.accountname
-                            && s.passwords == accounts.passwords && s.levels == 1
-                            select s;
-                if (quyen.Any())
+                MD5 md5 = System.Security.Cryptography.MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(accounts.passwords);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
                 {
-                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                    return RedirectToAction("Index", "Admin");
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+
+                accounts.passwords = sb.ToString();
+
+                var ketqua = from s in db.accounts
+                             where s.accountname == accounts.accountname
+                             && s.passwords == accounts.passwords
+                             select s;
+
+
+                if (ketqua.Any())
+                {
+                    var quyen = from s in db.accounts
+                                where s.accountname == accounts.accountname
+                                && s.passwords == accounts.passwords && s.levels == 1
+                                select s;
+                    if (quyen.Any())
+                    {
+                        FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                        return RedirectToAction("Index", "KhachHang");
+                    }
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                    return RedirectToAction("Index", "KhachHang");
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
                 }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+               
             }
             return View(accounts);
         }
@@ -227,34 +235,33 @@ namespace THUVIENSO.Controllers
                 string middlename = me.middle_name;
                 string lastname = me.last_name;
 
-
-                /*   account ac = new account();
+                Random _r = new Random();
+                int id1 = _r.Next();
+                   account ac = new account();
                    ac.accountname = email;
                    ac.passwords = "E10ADC3949BA59ABBE56E057F20F883E";
                    ac.levels = 2;
-                   ac.id = int.Parse(id);
+                   ac.id = id1;
+                   db.accounts.Add(ac);
 
                    customer cs = new customer();
-                   cs.id = int.Parse(id);
+                   cs.id = id1;
                    cs.username = firstname + " " + middlename + " " + lastname;
+                   db.customers.Add(cs);
 
                    Monney mn = new Monney();
-                   mn.id = int.Parse(id);
+                   mn.id = id1;
                    mn.monney1 = 0;
+                   db.Monneys.Add(mn);
 
-                   db.SaveChanges(); */
+                   db.SaveChanges(); 
 
                 FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
                 return RedirectToAction("Index", "KhachHang");
 
             }
             return RedirectToAction("Index", "KhachHang");
-
-
         }
-
-
-
 
     }
 }

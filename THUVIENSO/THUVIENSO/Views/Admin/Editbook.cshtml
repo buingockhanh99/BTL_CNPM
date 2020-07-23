@@ -14,8 +14,8 @@
 <body>
     @using (Html.BeginForm("Editbook", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.AntiForgeryToken()
-
+ 
+    @Html.AntiForgeryToken()
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
