@@ -318,3 +318,5 @@ H:\Github\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.csproj.CoreCompileInp
 H:\Github\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.csproj.CopyComplete
 H:\Github\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.dll
 H:\Github\BTL_CNPM\THUVIENSO\THUVIENSO\obj\Debug\THUVIENSO.pdb
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Facebook.dll
+K:\Cong_Nghe_Phan_Mem\BTL_CNPM\THUVIENSO\THUVIENSO\bin\Facebook.xml

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facebook;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,11 +11,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using THUVIENSO.Models;
+using System.Configuration;
 
 namespace THUVIENSO.Controllers
 {
     public class HomeController : Controller
     {
+
+        
         private THUVIENSO_Entities db = new THUVIENSO_Entities();
 
         public ActionResult Index()
@@ -54,7 +58,7 @@ namespace THUVIENSO.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult registration(taikhoan_customer model)
         {
             if (ModelState.IsValid)
@@ -114,16 +118,14 @@ namespace THUVIENSO.Controllers
 
             
             return View();
-        }
-
-
+        }     
         public ActionResult Login()
         {
             return View();
         }
         public bool RememberMe { set; get; }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult Login(account accounts)
         {
             MD5 md5 = System.Security.Cryptography.MD5.Create();
@@ -173,6 +175,83 @@ namespace THUVIENSO.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        private Uri RedirectUri
+        {
+            get
+            {
+                var uriBuilder = new UriBuilder(Request.Url);
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallback");
+                return uriBuilder.Uri;
+            }
+        }
+
+        public ActionResult LoginFacebook()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings[" FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email",
+
+
+            });
+            return Redirect(loginUrl.AbsoluteUri);
+        }
+
+        public ActionResult FacebookCallback(string code, account accounts)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token", new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+
+            });
+
+            var accessToken = result.access_token;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                fb.AccessToken = accessToken;
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+                string email = me.email;
+                string id = me.id;
+                string userName = me.email;
+                string firstname = me.first_name;
+                string middlename = me.middle_name;
+                string lastname = me.last_name;
+
+
+                /*   account ac = new account();
+                   ac.accountname = email;
+                   ac.passwords = "E10ADC3949BA59ABBE56E057F20F883E";
+                   ac.levels = 2;
+                   ac.id = int.Parse(id);
+
+                   customer cs = new customer();
+                   cs.id = int.Parse(id);
+                   cs.username = firstname + " " + middlename + " " + lastname;
+
+                   Monney mn = new Monney();
+                   mn.id = int.Parse(id);
+                   mn.monney1 = 0;
+
+                   db.SaveChanges(); */
+
+                FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
+                return RedirectToAction("Index", "KhachHang");
+
+            }
+            return RedirectToAction("Index", "KhachHang");
+
+
+        }
 
 
 

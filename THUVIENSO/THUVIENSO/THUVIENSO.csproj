@@ -57,6 +57,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -237,6 +240,7 @@
     <Content Include="Content\img\footer-pattern.png" />
     <Content Include="Content\img\LOGO-TEAM-BUILDING-1.jpg" />
     <Content Include="Content\img\pushkindiner1.jpg" />
+    <Content Include="css\bootstrap-social.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome_dk.css" />
     <Content Include="css\index1.css" />
@@ -306,6 +310,7 @@
     <Content Include="images\3.jpg" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\book\1.jpg" />
+    <Content Include="images\facebook.png" />
     <Content Include="images\images.png" />
     <Content Include="images\img_header.png" />
     <Content Include="images\logoK.png" />

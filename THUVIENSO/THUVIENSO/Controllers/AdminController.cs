@@ -160,8 +160,11 @@ namespace THUVIENSO.Controllers
         {
             account account = db.accounts.Find(id);
             customer customer = db.customers.Find(id);
+            Monney monney = db.Monneys.Find(id);
             db.customers.Remove(customer);
+            db.Monneys.Remove(monney);
             db.accounts.Remove(account);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!-- Main css -->
     <link href="~/css/style-acc.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-social.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -32,7 +33,7 @@
                         <h2 class="form-title" style="color:blue">Sign up</h2>
                         @using (Html.BeginForm())
                         {
-                            @Html.AntiForgeryToken()
+                          
                             <div class="form-group">
                                 <label for="name"><i class="fas fa-user-circle"></i></label>
                                 @Html.EditorFor(model => model.accountname, new { htmlAttributes = new { @class = "form-control", @placeholder = "AccountName" } })
@@ -47,16 +48,26 @@
                             @Html.ValidationSummary(true, null, new { @class = "form-group form-button" })
 
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                                <div style="float:left"><input type="submit" name="signin" id="signin" class="form-submit" value="Log in" /> |   </div>                           
+                                <div class="bnt btn-facebook"  style="float:left;margin-top:19px; height:40px" >
+                                    <a href="LoginFacebook" style="font-size:15px;height:25px;color:#fff;text-decoration:none; line-height:40px">
+                                        <i class="fab fa-facebook"></i>
+                                        Đăng Nhập bằng Facebook
+                                    </a>
+                                </div> 
+
+
                             </div>
+
                         }
+
 
                     </div>
                 </div>
             </div>
         </section>
 
-    </div>
+    </div>s
 
 
 </body>
