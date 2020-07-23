@@ -22,6 +22,7 @@
                 @Html.DisplayNameFor(model => model.customer.username)
             </th>
             <th>CMND</th>
+            <th>Xem thông tin</th>
             <th>Xóa</th>
         </tr>
 
@@ -38,8 +39,10 @@
                     @Html.DisplayFor(modelItem => item.id)
                 </td>
                 <td>
+                    <a href="ThongTinKhachHang/@item.id"><i class="fas fa-eye"></i></a>
+                </td>
+                <td>
                     <a href="Deletea/@item.id"><i class="fas fa-trash-alt"></i></a>
-               
                 </td>
             </tr>
         }

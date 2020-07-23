@@ -96,6 +96,12 @@ namespace THUVIENSO.Controllers
             return View(books.ToList());
         }
 
+        public ActionResult ListBook1(int? id)
+        {
+            var books = db.books.Include(b => b.booktopic).Where(b => b.id == id);
+            return View(books.ToList());
+        }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -204,6 +210,20 @@ namespace THUVIENSO.Controllers
             }
             ViewBag.id = new SelectList(db.booktopics, "id", "nametopic", model.id);
             return View(model);
+        }
+
+        public ActionResult ThongTinKhachHang(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            customer customer = db.customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
 

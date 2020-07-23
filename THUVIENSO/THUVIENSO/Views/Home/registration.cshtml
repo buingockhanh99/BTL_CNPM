@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title" style="color:blue">Sign up</h2>
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng Ký" />
                             </div>
                             <div class="form-group" style="color:red">
                                 @ViewBag.message
@@ -88,7 +88,9 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="~/images/signup-image.jpg" alt="sing up image"></figure>
-                        @Html.ActionLink("Đăng nhập", "Login", "Home")
+
+                        <a href="Login" style="font-size:25px;text-decoration: none;" id="a_dk">Đăng Nhập</a>
+                        
                     </div>
                 </div>
             </div>

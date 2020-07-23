@@ -25,11 +25,11 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="~/images/signin-image.jpg" alt="sing up image"></figure>
-                        @Html.ActionLink("Create an account", "registration", "Home")
+                        <a href="registration" style="font-size:25px;text-decoration: none;" id="a_dk">Đăng Ký</a>                  
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title" style="color:blue">Sign up</h2>
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()

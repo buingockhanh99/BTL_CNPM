@@ -3,36 +3,36 @@
 <head>
     <title>Thư viện số</title>
     <meta charset="utf-8">
-    <meta name="description" content="Traveling HTML5 Template" />
-    <meta name="author" content="Design Hooks" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="icon" type="image/png" href="~/images/logoK.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/css/screen4.css" rel="stylesheet" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
     <link href="~/Content/lightslider.css" rel="stylesheet" />
 
 </head>
 <body class="home" id="page">
     <!-- Header -->
     <header class="main-header">
+        <img src="~/images/images.png" />
         <div class="container">
             <div class="header-content">
 
                 <div></div>
                 <nav class="site-nav">
+
                     <ul class="clean-list site-links">
                         <li class="nav-item">
-                            <a href="#duocyeuthich">Được yêu thích</a>
+                            <a href="#sachyeuthich">Được yêu thích</a>
                         </li>
                         <li>
-                            <a href="#">Đọc nhiều nhất</a>
+                            <a href="#docnhieunhat">Đọc nhiều nhất</a>
                         </li>
                         <li>
-                            <a href="#">Tải về nhiều nhất</a>
+                            <a href="#taivenhieu">Tải về nhiều nhất</a>
                         </li>
                         <li>
-                            <a href="#">Mới được update</a>
+                            <a href="#moiupdate">Mới được update</a>
                         </li>
 
                     </ul>
@@ -91,47 +91,74 @@
         </section>
 
         <!-------------------------------------------------------------------->
-
-        <div id="noidung3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5" id="dmc">
-                        <div class="dmc1">
-                            <div class="dmc">
-                                <h3 style="">CHỦ ĐỀ CHÍNH</h3>
-                            </div>
-                            <ul>
-                                @{ THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
-                                    var name = from s in db.booktopics
-                                               select s;
-                                }
-                                @foreach (var item in name)
-                                {
-                                    <li>@Html.ActionLink(item.nametopic, "ViewBook", new { id = item.id })</li>
-                                }
-
-                            </ul>
+        <div class="container" id="noidung3">
+            <div class="row">
+                <div class="col-lg-5" id="dmc">
+                    <div class="dmc1">
+                        <div class="dmc">
+                            <h3 style="">CHỦ ĐỀ CHÍNH</h3>
+                            <hr />
                         </div>
+                        <ul>
+                            @{ THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
+                                var name = from s in db.booktopics
+                                           select s;
+                            }
+                            @foreach (var item in name)
+                            {
+                                <li>@Html.ActionLink(item.nametopic, "ViewBook", new { id = item.id })</li>
+                            }
+
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="col-lg-19" id="noidung">
-                        <div class="noidung1" style="height:15px">
+                <div class="col-lg-19" id="noidung">
+                    <div class="noidung1" style="height:15px">
 
 
-                        </div>
-                        @RenderBody()
                     </div>
+                    @RenderBody()
+                </div>
 
+            </div>
+        </div>
+
+        <div class="container" id="listpt">
+            <div id="sachyeuthich">
+                <h3>SÁCH ĐƯỢC YÊU THÍCH</h3>
+                <hr />
+
+                <div class="box">
+                    <img src="~/images/book/1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh2.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh3.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh4.jpg" />
                 </div>
             </div>
 
         </div>
 
-         <div class="container listpt" id="duocyeuthich">
-            <div class="col-md-6"></div>
-            <div class="col-md-18">
+        <div class="container" id="listpt">
+            <div id="docnhieunhat">
+                <h3>SÁCH ĐỌC NHIỀU NHẤT</h3>
+                <hr />
+
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <img src="~/images/book/1.jpg" />
                 </div>
 
                 <div class="box">
@@ -139,17 +166,74 @@
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <img src="~/Content/img/anh2.jpg" />
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <img src="~/Content/img/anh3.jpg" />
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <img src="~/Content/img/anh4.jpg" />
                 </div>
             </div>
+
+        </div>
+
+        <div class="container" id="listpt">
+            <div id="taivenhieu">
+                <h3>SÁCH TẢI VỀ NHIỀU NHẤT</h3>
+                <hr />
+
+                <div class="box">
+                    <img src="~/images/book/1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh2.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh3.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh4.jpg" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container" id="listpt">
+            <div id="moiupdate">
+                <h3>SÁCH MỚI UPDATE</h3>
+                <hr />
+
+                <div class="box">
+                    <img src="~/images/book/1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh1.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh2.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh3.jpg" />
+                </div>
+
+                <div class="box">
+                    <img src="~/Content/img/anh4.jpg" />
+                </div>
+            </div>
+
         </div>
 
 

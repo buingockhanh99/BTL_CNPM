@@ -1,0 +1,49 @@
+﻿@model THUVIENSO.Models.customer
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4 style="font-weight:bold">Thông Tin Khách Hàng</h4>
+        <div style="height:20px"></div>
+        <table>
+            <tr>
+                <th width="150">Họ & Tên: </th>
+                <td>  @Html.DisplayFor(model => model.username)</td>
+            </tr>
+            <tr>
+                <th>Địa Chỉ: </th>
+                <td> @Html.DisplayFor(model => model.addres)</td>
+            </tr>
+            <tr>
+                <th>Số Điện Thoại: </th>
+                <td>@Html.DisplayFor(model => model.phonenumber)</td>
+            </tr>
+            <tr>
+                <th>Giới Tính: </th>
+                <td> @Html.DisplayFor(model => model.sex)</td>
+            </tr>
+            <tr>
+                <th>Tài Khoản KH: </th>
+                <td>@Html.DisplayFor(model => model.account.accountname)</td>
+            </tr>
+        </table>
+
+    </div>
+    <div style="height:20px"></div>
+    <p>
+        @Html.ActionLink("Trở Lại", "Index")
+    </p>
+</body>
+</html>
+
+
