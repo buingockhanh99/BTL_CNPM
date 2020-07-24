@@ -4,6 +4,12 @@
     <title>Thư viện số</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="~/images/logoK.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+   
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -14,7 +20,6 @@
 <body class="home" id="page">
     <!-- Header -->
     <header class="main-header">
-        <img src="~/images/images.png" />
         <div class="container">
             <div class="header-content">
 
@@ -36,7 +41,19 @@
                         </li>
 
                     </ul>
-                    @Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "btn btn-outlined" })
+                    <ul class="navbar-nav ">
+                      
+                        <li class="nav-item dropdown">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">                              
+                                <div class="dropdown-divider"> @Html.ActionLink("Log out", "Logout", "Home", null, new { @class = "dropdown-item" })</div>                            
+                            </div>
+                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                                <label>Đăng Xuất</label>
+                            </a>
+                        </li>
+                    </ul>
+
                 </nav>
             </div>
         </div>
@@ -54,13 +71,12 @@
                     </div>
                     @using (Html.BeginForm("Search_Results", "Home", FormMethod.Post))
                     {
-                        <div class="destinations-form">
-                            <div class="input-line">
-                                <input type="text" name="booktitle" value="" class="form-input check-value" placeholder="Tên sách, Chủ đề, Tên tác giả . . ." />
-                                <button type="submit" name="destination-submit" class="form-submit btn btn-special">Tìm kiếm</button>
-                            </div>
-                        </div>
-                    }
+        <div class="destinations-form">
+            <div class="input-line">
+                <input type="text" name="booktitle" value="" class="form-input check-value" placeholder="Tên sách, Chủ đề, Tên tác giả . . ." />
+                <button type="submit" name="destination-submit" class="form-submit btn btn-special">Tìm kiếm</button>
+            </div>
+        </div>}
                 </div>
             </div>
 
@@ -96,18 +112,17 @@
                 <div class="col-lg-5" id="dmc">
                     <div class="dmc1">
                         <div class="dmc">
-                            <h3 style="">CHỦ ĐỀ CHÍNH</h3>
+                            <h3 style="">DANH MỤC CHÍNH</h3>
                             <hr />
                         </div>
                         <ul>
                             @{ THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
                                 var name = from s in db.booktopics
-                                           select s;
-                            }
+                                           select s; }
                             @foreach (var item in name)
                             {
-                                <li>@Html.ActionLink(item.nametopic, "ViewBook", new { id = item.id })</li>
-                            }
+                <li>@Html.ActionLink(item.nametopic, "ViewBook", new { id = item.id })</li>
+}
 
                         </ul>
                     </div>
@@ -130,23 +145,24 @@
                 <hr />
 
                 <div class="box">
-                    <img src="~/images/book/1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/1.jpg" /></a>
+                   
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/2.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh2.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/3.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh3.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/4.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh4.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/5.jpg" /></a>
                 </div>
             </div>
 
@@ -158,23 +174,23 @@
                 <hr />
 
                 <div class="box">
-                    <img src="~/images/book/1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/6.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/7.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh2.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/8.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh3.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/9.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh4.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/10.jpg" /></a>
                 </div>
             </div>
 
@@ -186,23 +202,23 @@
                 <hr />
 
                 <div class="box">
-                    <img src="~/images/book/1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/11.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/12.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh2.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/13.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh3.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/14.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh4.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/15.jpg" /></a>
                 </div>
             </div>
 
@@ -214,23 +230,23 @@
                 <hr />
 
                 <div class="box">
-                    <img src="~/images/book/1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/16.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh1.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/17.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh2.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/18.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh3.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/19.jpg" /></a>
                 </div>
 
                 <div class="box">
-                    <img src="~/Content/img/anh4.jpg" />
+                    <a href="~/PDF/book20564321.pdf" target="_blank"> <img src="~/images/20.jpg" /></a>
                 </div>
             </div>
 
@@ -305,7 +321,39 @@
     @Scripts.Render("~/template/js")
 
 
-
+    <script src="~/layout_admin/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/layout_admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/layout_admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/layout_admin/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/layout_admin/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/layout_admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/layout_admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/layout_admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/layout_admin/plugins/moment/moment.min.js"></script>
+    <script src="~/layout_admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/layout_admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/layout_admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/layout_admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/layout_admin/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/layout_admin/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/layout_admin/dist/js/demo.js"></script>
 
 </body>
 </html>

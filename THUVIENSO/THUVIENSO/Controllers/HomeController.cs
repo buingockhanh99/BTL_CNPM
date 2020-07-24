@@ -17,6 +17,7 @@ namespace THUVIENSO.Controllers
 {
     public class HomeController : Controller
     {
+         
 
         
         private THUVIENSO_Entities db = new THUVIENSO_Entities();
@@ -159,11 +160,13 @@ namespace THUVIENSO.Controllers
                                 select s;
                     if (quyen.Any())
                     {
+                       
                         FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
                         return RedirectToAction("Index", "Admin");
                     }
                     else
                     {
+                        
                         FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
                         return RedirectToAction("Index", "KhachHang");
                     }
@@ -211,7 +214,7 @@ namespace THUVIENSO.Controllers
             return Redirect(loginUrl.AbsoluteUri);
         }
 
-        public ActionResult FacebookCallback(string code, account accounts)
+        public ActionResult FacebookCallback(string code)
         {
             var fb = new FacebookClient();
             dynamic result = fb.Post("oauth/access_token", new
@@ -254,13 +257,27 @@ namespace THUVIENSO.Controllers
                    mn.monney1 = 0;
                    db.Monneys.Add(mn);
 
-                   db.SaveChanges(); 
-
-                FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                return RedirectToAction("Index", "KhachHang");
-
+                var check_tk = from s in db.accounts
+                               where s.accountname == email
+                               select s;
+                if (check_tk.Any())
+                {
+                    
+                    FormsAuthentication.SetAuthCookie(ac.accountname, RememberMe);
+                    return RedirectToAction("Index", "KhachHang");
+                }
+                else
+                {
+                    
+                    db.SaveChanges();
+                    FormsAuthentication.SetAuthCookie(ac.accountname, RememberMe);
+                    return RedirectToAction("Index", "KhachHang");
+                }
+                    
+                    
+           
             }
-            return RedirectToAction("Index", "KhachHang");
+            return View();
         }
 
     }
