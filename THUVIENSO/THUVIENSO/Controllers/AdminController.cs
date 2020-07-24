@@ -272,10 +272,9 @@ namespace THUVIENSO.Controllers
                 model.datafile.SaveAs(DatafileName);
 
               
-
-
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
+
               //  ViewBag.message = "Thêm thành sách công";
                 return RedirectToAction("ListBook"); 
             }
