@@ -21,8 +21,8 @@ namespace THUVIENSO.Models
         public string passwords { get; set; }
         public int id { get; set; }
         public Nullable<int> levels { get; set; }
-    
+
         public virtual customer customer { get; set; }
-        public virtual Monney Monney { get; set; }
+
     }
 }

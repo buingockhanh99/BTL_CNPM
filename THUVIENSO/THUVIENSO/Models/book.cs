@@ -25,7 +25,7 @@ namespace THUVIENSO.Models
         [DisplayName("Upload File")]
         public string DataContent { get; set; }
         public Nullable<int> price { get; set; }
-    
+
         public virtual booktopic booktopic { get; set; }
 
         public HttpPostedFileBase imgfile { get; set; }

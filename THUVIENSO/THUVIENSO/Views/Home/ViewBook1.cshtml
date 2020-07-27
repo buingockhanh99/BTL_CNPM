@@ -1,0 +1,21 @@
+﻿@model IEnumerable<THUVIENSO.Models.book>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBook1</title>
+</head>
+<body>
+    @foreach (var item in Model)
+    {
+
+        <embed src="@Url.Content(item.DataContent)" style=" height:880px; width:100%" type="application/pdf">
+    }
+
+    </body>
+</html>

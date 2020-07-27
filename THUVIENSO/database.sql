@@ -10,6 +10,7 @@ id int primary key,
 levels int
 )
 
+select * from customer
 
 create table customer(
 id int primary key,
@@ -17,14 +18,24 @@ username nvarchar(200),
 addres nvarchar (250),
 phonenumber char (10),
 sex varchar (3),
+sodutk int,
 CONSTRAINT FK_ID  FOREIGN KEY(id) REFERENCES account (id) 
 )
 
-create table Monney(
-id int primary key,
-monney int,
-CONSTRAINT FK_ID1  FOREIGN KEY(id) REFERENCES account (id)
+create table Customer_requirements(
+id int,
+id1 int IDENTITY (1,1) primary key,
+Request int,
+statuss int,
+dateyc date,
+dateht date,
+CONSTRAINT FK_ID1  FOREIGN KEY(id) REFERENCES customer (id)
 )
+
+
+
+
+
 
 
 create table booktopic(
@@ -49,7 +60,9 @@ CONSTRAINT FK_ID2  FOREIGN KEY(id) REFERENCES booktopic (id)
 insert into account values ('admin','E10ADC3949BA59ABBE56E057F20F883E',1,'1')
 insert into account values ('khachhang','E10ADC3949BA59ABBE56E057F20F883E',123456,'2')
 
-insert into customer values (123456,N'Bùi Ngọc Khánh',N'Vân Hội - Trấn Yên - Yên Bái','0368699895',N'Nam')
+select * from Customer_requirements
+
+insert into customer values (123456,N'Bùi Ngọc Khánh',N'Vân Hội - Trấn Yên - Yên Bái','0368699895',N'Nam',0)
 
 insert into Monney values (123456,0)
 

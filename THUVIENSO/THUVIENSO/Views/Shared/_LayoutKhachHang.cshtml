@@ -25,7 +25,6 @@
 
                 <div></div>
                 <nav class="site-nav">
-
                     <ul class="clean-list site-links">
                         <li class="nav-item">
                             <a href="#sachyeuthich">Được yêu thích</a>
@@ -39,20 +38,21 @@
                         <li>
                             <a href="#moiupdate">Mới được update</a>
                         </li>
+                    </ul>                 
 
-                    </ul>
-                    <ul class="navbar-nav ">
-                      
-                        <li class="nav-item dropdown">
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">                              
-                                <div class="dropdown-divider"> @Html.ActionLink("Log out", "Logout", "Home", null, new { @class = "dropdown-item" })</div>                            
-                            </div>
-                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i>
-                                <label>Đăng Xuất</label>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="dropdown">
+                        <button style="color:#000" class="btn btn-outlined" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i> Tài khoản
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                            <button class="dropdown-item" type="button">@Html.ActionLink("Nạp tiền vào tài khoản", "NapTien", "KhachHang")</button>
+                            <button class="dropdown-item" type="button"> @Html.ActionLink("Thông tin tài khoản", "ThongTinTaiKhoan", "KhachHang")</button>
+                            <button class="dropdown-item" type="button"> @Html.ActionLink("Thay đổi mật khẩu", "EditPass", "KhachHang")</button>
+                           
+                            <button class="dropdown-item" type="button"> @Html.ActionLink("Đăng Xuất", "Logout", "Home")</button>
+                        </div>
+                    </div>
 
                 </nav>
             </div>

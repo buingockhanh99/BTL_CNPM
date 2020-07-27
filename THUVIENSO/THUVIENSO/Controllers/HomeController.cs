@@ -18,13 +18,28 @@ namespace THUVIENSO.Controllers
     public class HomeController : Controller
     {
          
-
-        
         private THUVIENSO_Entities db = new THUVIENSO_Entities();
         public ActionResult test()
         {
+            
             return View();
         }
+
+
+        public ActionResult ViewBook1(int? id)
+        {
+
+            
+            var book = from s in db.books
+                       where s.idbook == id
+                       select s;
+            return View(book.ToList());
+
+          
+          
+        }
+
+
         public ActionResult Index()
         {
             var books = db.books.Include(b => b.booktopic);
@@ -106,12 +121,10 @@ namespace THUVIENSO.Controllers
                     cs.addres = model.addres;
                     cs.phonenumber = model.phonenumber;
                     cs.sex = model.sex;
+                    cs.sodutk = 0;
                     db.customers.Add(cs);
 
-                    Monney mn = new Monney();
-                    mn.id = model.id;
-                    mn.monney1 = 0;
-                    db.Monneys.Add(mn);
+                   
 
                     db.SaveChanges();
 
@@ -150,6 +163,7 @@ namespace THUVIENSO.Controllers
                              where s.accountname == accounts.accountname
                              && s.passwords == accounts.passwords
                              select s;
+               
 
 
                 if (ketqua.Any())
@@ -160,15 +174,17 @@ namespace THUVIENSO.Controllers
                                 select s;
                     if (quyen.Any())
                     {
-                       
-                        FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                        return RedirectToAction("Index", "Admin");
+                        Response.Write("<script>alert('Vui lòng truy cập trang login dành cho admin')</script>");
+                        return View();
                     }
                     else
-                    {
-                        
-                        FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);
-                        return RedirectToAction("Index", "KhachHang");
+                    {        
+                        foreach (var item in ketqua)
+                        {
+                            Session["id"] = item.id;   
+                            FormsAuthentication.SetAuthCookie(accounts.accountname, RememberMe);                                                     
+                            return RedirectToAction("Index", "KhachHang");
+                        }
                     }
                 }
                 else
@@ -183,6 +199,7 @@ namespace THUVIENSO.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session["id"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -250,19 +267,19 @@ namespace THUVIENSO.Controllers
                    customer cs = new customer();
                    cs.id = id1;
                    cs.username = firstname + " " + middlename + " " + lastname;
+                   cs.sodutk = 0;
                    db.customers.Add(cs);
 
-                   Monney mn = new Monney();
-                   mn.id = id1;
-                   mn.monney1 = 0;
-                   db.Monneys.Add(mn);
 
                 var check_tk = from s in db.accounts
                                where s.accountname == email
                                select s;
+                
                 if (check_tk.Any())
                 {
-                    
+                    foreach (var item in check_tk)
+                    { Session["id"] = item.id; }    
+                   
                     FormsAuthentication.SetAuthCookie(ac.accountname, RememberMe);
                     return RedirectToAction("Index", "KhachHang");
                 }
@@ -270,6 +287,7 @@ namespace THUVIENSO.Controllers
                 {
                     
                     db.SaveChanges();
+                    Session["id"] = id1 ;
                     FormsAuthentication.SetAuthCookie(ac.accountname, RememberMe);
                     return RedirectToAction("Index", "KhachHang");
                 }

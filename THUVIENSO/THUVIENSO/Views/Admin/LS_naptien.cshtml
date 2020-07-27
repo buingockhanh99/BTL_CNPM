@@ -1,0 +1,40 @@
+﻿@model IEnumerable<THUVIENSO.Models.Customer_requirements>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Tài khoản</th>
+            <th>Số tiền yêu cầu nạp</th>
+            <th>Ngày yêu cầu nạp</th>
+            <th>Ngày hoàn thành</th>
+            <th>Trạng thái</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.customer.username)</td>
+                <td>@Html.DisplayFor(modelItem => item.Request)</td>
+                <td>@Html.DisplayFor(modelItem => item.dateyc)</td>
+                <td>@Html.DisplayFor(modelItem => item.dateht)</td>
+                
+                <td style="background:#00ff90; color:#ffffff">Đã nạp thành công</td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

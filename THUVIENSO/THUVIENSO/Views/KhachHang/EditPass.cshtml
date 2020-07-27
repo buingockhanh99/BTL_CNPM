@@ -1,0 +1,61 @@
+﻿@model THUVIENSO.Models.DoiMK
+
+@{
+    Layout = "~/Views/Shared/_LayoutKhachHang1.cshtml";
+}
+
+<h3>Thay đổi mật khẩu</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pass_old, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập mật khẩu cũ", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.pass_old, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pass_new, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập mật khẩu mới", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.pass_new, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pass_confim, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập mật lại mật khẩu", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.pass_confim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @{ string id1 = Session["id"].ToString();
+            int id2 = int.Parse(id1);
+            THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
+            var sl = from s in db.accounts
+                     where s.id == id2
+                     select s;
+        }
+        @foreach (var item in sl)
+        {
+            <input type="hidden" name="id5" value="@item.id" />
+            <input type="hidden" name="name_ac" value="@item.accountname" />
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thay đổi" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+            }
+

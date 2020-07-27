@@ -37,13 +37,18 @@
     <Property Name="addres" Type="nvarchar" MaxLength="250" />
     <Property Name="phonenumber" Type="char" MaxLength="10" />
     <Property Name="sex" Type="varchar" MaxLength="3" />
+    <Property Name="sodutk" Type="int" />
   </EntityType>
-  <EntityType Name="Monney">
+  <EntityType Name="Customer_requirements">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="id1" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="monney" Type="int" />
+    <Property Name="id" Type="int" />
+    <Property Name="id1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Request" Type="int" />
+    <Property Name="statuss" Type="int" />
+    <Property Name="dateyc" Type="date" />
+    <Property Name="dateht" Type="date" />
   </EntityType>
   <Association Name="FK_ID">
     <End Role="account" Type="Self.account" Multiplicity="1" />
@@ -58,13 +63,13 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ID1">
-    <End Role="account" Type="Self.account" Multiplicity="1" />
-    <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="Customer_requirements" Type="Self.Customer_requirements" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="account">
+      <Principal Role="customer">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Monney">
+      <Dependent Role="Customer_requirements">
         <PropertyRef Name="id" />
       </Dependent>
     </ReferentialConstraint>
@@ -86,14 +91,14 @@
     <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="booktopic" EntityType="Self.booktopic" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Monney" EntityType="Self.Monney" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_requirements" EntityType="Self.Customer_requirements" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ID" Association="Self.FK_ID">
       <End Role="account" EntitySet="account" />
       <End Role="customer" EntitySet="customer" />
     </AssociationSet>
     <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
-      <End Role="account" EntitySet="account" />
-      <End Role="Monney" EntitySet="Monney" />
+      <End Role="customer" EntitySet="customer" />
+      <End Role="Customer_requirements" EntitySet="Customer_requirements" />
     </AssociationSet>
     <AssociationSet Name="FK_ID2" Association="Self.FK_ID2">
       <End Role="booktopic" EntitySet="booktopic" />

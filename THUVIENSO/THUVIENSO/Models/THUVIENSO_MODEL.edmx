@@ -42,13 +42,18 @@
           <Property Name="addres" Type="nvarchar" MaxLength="250" />
           <Property Name="phonenumber" Type="char" MaxLength="10" />
           <Property Name="sex" Type="varchar" MaxLength="3" />
+          <Property Name="sodutk" Type="int" />
         </EntityType>
-        <EntityType Name="Monney">
+        <EntityType Name="Customer_requirements">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id1" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="monney" Type="int" />
+          <Property Name="id" Type="int" />
+          <Property Name="id1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Request" Type="int" />
+          <Property Name="statuss" Type="int" />
+          <Property Name="dateyc" Type="date" />
+          <Property Name="dateht" Type="date" />
         </EntityType>
         <Association Name="FK_ID">
           <End Role="account" Type="Self.account" Multiplicity="1" />
@@ -63,13 +68,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ID1">
-          <End Role="account" Type="Self.account" Multiplicity="1" />
-          <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Customer_requirements" Type="Self.Customer_requirements" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="account">
+            <Principal Role="customer">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Monney">
+            <Dependent Role="Customer_requirements">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
@@ -91,14 +96,14 @@
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="booktopic" EntityType="Self.booktopic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Monney" EntityType="Self.Monney" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_requirements" EntityType="Self.Customer_requirements" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ID" Association="Self.FK_ID">
             <End Role="account" EntitySet="account" />
             <End Role="customer" EntitySet="customer" />
           </AssociationSet>
           <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
-            <End Role="account" EntitySet="account" />
-            <End Role="Monney" EntitySet="Monney" />
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Customer_requirements" EntitySet="Customer_requirements" />
           </AssociationSet>
           <AssociationSet Name="FK_ID2" Association="Self.FK_ID2">
             <End Role="booktopic" EntitySet="booktopic" />
@@ -118,7 +123,6 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="levels" Type="Int32" />
           <NavigationProperty Name="customer" Relationship="Self.FK_ID" FromRole="account" ToRole="customer" />
-          <NavigationProperty Name="Monney" Relationship="Self.FK_ID1" FromRole="account" ToRole="Monney" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -130,14 +134,8 @@
           <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="account" Relationship="Self.FK_ID" FromRole="customer" ToRole="account" />
-        </EntityType>
-        <EntityType Name="Monney">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="monney1" Type="Int32" />
-          <NavigationProperty Name="account" Relationship="Self.FK_ID1" FromRole="Monney" ToRole="account" />
+          <Property Name="sodutk" Type="Int32" />
+          <NavigationProperty Name="Customer_requirements" Relationship="THUVIENSOModel.FK_ID1" FromRole="customer" ToRole="Customer_requirements" />
         </EntityType>
         <Association Name="FK_ID">
           <End Role="account" Type="Self.account" Multiplicity="1" />
@@ -151,35 +149,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ID1">
-          <End Role="account" Type="Self.account" Multiplicity="1" />
-          <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="account">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Monney">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="THUVIENSO_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="accounts" EntityType="Self.account" />
           <EntitySet Name="customers" EntityType="Self.customer" />
-          <EntitySet Name="Monneys" EntityType="Self.Monney" />
           <AssociationSet Name="FK_ID" Association="Self.FK_ID">
             <End Role="account" EntitySet="accounts" />
             <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
-            <End Role="account" EntitySet="accounts" />
-            <End Role="Monney" EntitySet="Monneys" />
           </AssociationSet>
           <EntitySet Name="books" EntityType="THUVIENSOModel.book" />
           <EntitySet Name="booktopics" EntityType="THUVIENSOModel.booktopic" />
           <AssociationSet Name="FK_ID2" Association="THUVIENSOModel.FK_ID2">
             <End Role="booktopic" EntitySet="booktopics" />
             <End Role="book" EntitySet="books" />
+          </AssociationSet>
+          <EntitySet Name="Customer_requirements" EntityType="THUVIENSOModel.Customer_requirements" />
+          <AssociationSet Name="FK_ID1" Association="THUVIENSOModel.FK_ID1">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Customer_requirements" EntitySet="Customer_requirements" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="book">
@@ -215,6 +201,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Customer_requirements">
+          <Key>
+            <PropertyRef Name="id1" />
+          </Key>
+          <Property Name="id" Type="Int32" />
+          <Property Name="id1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request" Type="Int32" />
+          <Property Name="statuss" Type="Int32" />
+          <Property Name="dateyc" Type="DateTime" Precision="0" />
+          <Property Name="dateht" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="customer" Relationship="THUVIENSOModel.FK_ID1" FromRole="Customer_requirements" ToRole="customer" />
+        </EntityType>
+        <Association Name="FK_ID1">
+          <End Type="THUVIENSOModel.customer" Role="customer" Multiplicity="0..1" />
+          <End Type="THUVIENSOModel.Customer_requirements" Role="Customer_requirements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer_requirements">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -234,19 +244,12 @@
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="THUVIENSOModel.customer">
               <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="sodutk" ColumnName="sodutk" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="addres" ColumnName="addres" />
                 <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
                 <ScalarProperty Name="sex" ColumnName="sex" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Monneys">
-            <EntityTypeMapping TypeName="THUVIENSOModel.Monney">
-              <MappingFragment StoreEntitySet="Monney">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="monney1" ColumnName="monney" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -267,6 +270,18 @@
             <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
               <MappingFragment StoreEntitySet="booktopic">
                 <ScalarProperty Name="nametopic" ColumnName="nametopic" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_requirements">
+            <EntityTypeMapping TypeName="THUVIENSOModel.Customer_requirements">
+              <MappingFragment StoreEntitySet="Customer_requirements">
+                <ScalarProperty Name="dateht" ColumnName="dateht" />
+                <ScalarProperty Name="dateyc" ColumnName="dateyc" />
+                <ScalarProperty Name="statuss" ColumnName="statuss" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

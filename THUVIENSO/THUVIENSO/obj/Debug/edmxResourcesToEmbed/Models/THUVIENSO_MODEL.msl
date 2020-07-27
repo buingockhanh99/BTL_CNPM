@@ -14,19 +14,12 @@
     <EntitySetMapping Name="customers">
       <EntityTypeMapping TypeName="THUVIENSOModel.customer">
         <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="sodutk" ColumnName="sodutk" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="addres" ColumnName="addres" />
           <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
           <ScalarProperty Name="sex" ColumnName="sex" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Monneys">
-      <EntityTypeMapping TypeName="THUVIENSOModel.Monney">
-        <MappingFragment StoreEntitySet="Monney">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="monney1" ColumnName="monney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,6 +40,18 @@
       <EntityTypeMapping TypeName="THUVIENSOModel.booktopic">
         <MappingFragment StoreEntitySet="booktopic">
           <ScalarProperty Name="nametopic" ColumnName="nametopic" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_requirements">
+      <EntityTypeMapping TypeName="THUVIENSOModel.Customer_requirements">
+        <MappingFragment StoreEntitySet="Customer_requirements">
+          <ScalarProperty Name="dateht" ColumnName="dateht" />
+          <ScalarProperty Name="dateyc" ColumnName="dateyc" />
+          <ScalarProperty Name="statuss" ColumnName="statuss" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

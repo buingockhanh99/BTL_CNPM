@@ -1,0 +1,51 @@
+﻿@model THUVIENSO.Models.account
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutKhachHang1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.accountname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accountname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passwords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passwords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.levels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.levels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

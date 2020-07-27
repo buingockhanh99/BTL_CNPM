@@ -1,0 +1,58 @@
+﻿@model IEnumerable<THUVIENSO.Models.customer>
+
+@{  Layout = "~/Views/Shared/_LayoutKhachHang1.cshtml"; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body> 
+    <table class="table">
+         @foreach (var item in Model)
+         {
+        <tr>
+            <th>
+                Họ và tên
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Địa chỉ
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.addres)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Số điện thoại
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.phonenumber)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Giới tính
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.sex)
+            </td>
+        </tr>
+        <tr>
+            <th>Số dư tài khoản</th>
+            <td>@Html.DisplayFor(modelItem => item.sodutk)</td>
+        </tr>
+         }
+    </table>
+     @foreach (var item in Model)
+     {
+      @Html.ActionLink("Cập nhật", "Edit", new { id = item.id })   
+     }
+</body>
+</html>

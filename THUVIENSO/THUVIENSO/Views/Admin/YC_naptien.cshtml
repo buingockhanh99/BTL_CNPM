@@ -1,0 +1,72 @@
+﻿@model IEnumerable<THUVIENSO.Models.Customer_requirements>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+               Tài khoản
+            </th>          
+            <th>
+               Số tiền yêu cầu nạp
+            </th>
+            <th>Trạng thái</th>
+            <th>Nạp</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer.username)
+                </td>              
+                <td>
+                    @Html.DisplayFor(modelItem => item.Request)           
+                </td>
+                <td style="background:#fb2d2d; color: #ffffff">Chưa nạp</td>
+                <td>
+                    @using (Html.BeginForm())
+                    {
+
+                        <input type="hidden" name="id" value="@item.id" />
+                        <input type="hidden" name="id1" value="@item.id1" />
+                        <input type="hidden" name="Request" value="@item.Request" />
+                        <input type="hidden" name="statuss" value="1" />
+                        THUVIENSO.Models.THUVIENSO_Entities db = new THUVIENSO.Models.THUVIENSO_Entities();
+                        var cs = from s in db.customers
+                                 where s.id == item.id
+                                 select s;
+
+                        foreach (var item1 in cs)
+                        {
+                            int tk1 = int.Parse(item.Request.ToString());
+                            int tk2 = int.Parse(item1.sodutk.ToString());
+                            int tk = tk1 + tk2;
+                            <input type="hidden" name="username" value="@item1.username" />
+                            <input type="hidden" name="addres" value="@item1.addres" />
+                            <input type="hidden" name="phonenumber" value="@item1.phonenumber" />
+                            <input type="hidden" name="sex" value="@item1.sex" />
+                            <input type="hidden" name="sodutk" value="@tk" />
+                        }
+                        <button type="submit" class="btn btn-block">Nạp</button>
+                    }
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

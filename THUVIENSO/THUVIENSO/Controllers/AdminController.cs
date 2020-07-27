@@ -82,7 +82,7 @@ namespace THUVIENSO.Controllers
         [Authorize] //check xem đã đăng nhập chưa
         public ActionResult Index()
         {
-            var accounts = db.accounts.Include(a => a.customer).Include(a => a.Monney).Where(a => a.levels ==2);
+            var accounts = db.accounts.Include(a => a.customer).Where(a => a.levels ==2);
             return View(accounts.ToList());
         }
 
@@ -100,13 +100,25 @@ namespace THUVIENSO.Controllers
         public ActionResult InsertChuDe([Bind(Include = "id,nametopic")] booktopic booktopic)
         {
             if (ModelState.IsValid)
-            {  
-                db.booktopics.Add(booktopic);
-                db.SaveChanges();
-               
-                ViewBag.message = "Thêm thành công";
-                ModelState.Clear();
-                return View();  
+            {
+                var check_toppic = from s in db.booktopics
+                                   where s.nametopic == booktopic.nametopic
+                                   select s;
+                if (check_toppic.Any())
+                {
+                    ViewBag.message = "Đã có chủ đề này";
+                    return View();
+                }
+                else
+                {
+                    db.booktopics.Add(booktopic);
+                    db.SaveChanges();
+
+                    ViewBag.message = "Thêm thành công";
+                    ModelState.Clear();
+                    return View();
+                }
+                                    
             }
 
           //  ViewBag.id = new SelectList(db.books, "id", "booktitle", booktopic.id);
@@ -226,9 +238,9 @@ namespace THUVIENSO.Controllers
         {
             account account = db.accounts.Find(id);
             customer customer = db.customers.Find(id);
-            Monney monney = db.Monneys.Find(id);
+          
             db.customers.Remove(customer);
-            db.Monneys.Remove(monney);
+           
             db.accounts.Remove(account);
 
             db.SaveChanges();
@@ -296,6 +308,83 @@ namespace THUVIENSO.Controllers
             return View(customer);
         }
 
+        public ActionResult YC_naptien()
+        {
+            var customer_requirements = from s in db.Customer_requirements
+                                        where s.statuss == 0
+                                        select s;
+            return View(customer_requirements.ToList());
+        }
+        
+        [HttpPost]
+        public ActionResult YC_naptien([Bind(Include = "id,username,addres,phonenumber,sex,sodutk")] customer customer,int id1)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;            
+                db.SaveChanges();
+
+
+                Customer_requirements cs = db.Customer_requirements.Single(s => s.id1 == id1);
+                cs.statuss = 1;
+                cs.dateht = DateTime.Now;
+                db.SaveChanges();
+
+                Response.Write("<script>alert('Nạp tiền thành công')</script>");
+                return RedirectToAction("LS_naptien");
+            }
+            ViewBag.id = new SelectList(db.accounts, "id", "accountname", customer.id);
+            return View(customer);
+        }
+        
+
+        public ActionResult LS_naptien()
+        {
+            var customer_requirements = from s in db.Customer_requirements
+                                        where s.statuss == 1
+                                        select s;
+            return View(customer_requirements.ToList());
+        }
+
+
+
+
+
+
+        public ActionResult EditPass()
+        {
+            string id1 = Session["id"].ToString();
+            int id2 = int.Parse(id1);
+            if (id2 == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            account account = db.accounts.Find(id2);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
+            return View(account);
+        }
+
+        // POST: accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPass([Bind(Include = "accountname,passwords,id,levels")] account account)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.id = new SelectList(db.customers, "id", "username", account.id);
+            return View(account);
+        }
 
 
     }

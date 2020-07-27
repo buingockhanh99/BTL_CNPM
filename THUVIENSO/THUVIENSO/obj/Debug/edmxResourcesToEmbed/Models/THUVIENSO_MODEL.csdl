@@ -9,7 +9,6 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="levels" Type="Int32" />
     <NavigationProperty Name="customer" Relationship="Self.FK_ID" FromRole="account" ToRole="customer" />
-    <NavigationProperty Name="Monney" Relationship="Self.FK_ID1" FromRole="account" ToRole="Monney" />
   </EntityType>
   <EntityType Name="customer">
     <Key>
@@ -21,14 +20,8 @@
     <Property Name="phonenumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="account" Relationship="Self.FK_ID" FromRole="customer" ToRole="account" />
-  </EntityType>
-  <EntityType Name="Monney">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="monney1" Type="Int32" />
-    <NavigationProperty Name="account" Relationship="Self.FK_ID1" FromRole="Monney" ToRole="account" />
+    <Property Name="sodutk" Type="Int32" />
+    <NavigationProperty Name="Customer_requirements" Relationship="THUVIENSOModel.FK_ID1" FromRole="customer" ToRole="Customer_requirements" />
   </EntityType>
   <Association Name="FK_ID">
     <End Role="account" Type="Self.account" Multiplicity="1" />
@@ -42,35 +35,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ID1">
-    <End Role="account" Type="Self.account" Multiplicity="1" />
-    <End Role="Monney" Type="Self.Monney" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="account">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Monney">
-        <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="THUVIENSO_Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="accounts" EntityType="Self.account" />
     <EntitySet Name="customers" EntityType="Self.customer" />
-    <EntitySet Name="Monneys" EntityType="Self.Monney" />
     <AssociationSet Name="FK_ID" Association="Self.FK_ID">
       <End Role="account" EntitySet="accounts" />
       <End Role="customer" EntitySet="customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ID1" Association="Self.FK_ID1">
-      <End Role="account" EntitySet="accounts" />
-      <End Role="Monney" EntitySet="Monneys" />
     </AssociationSet>
     <EntitySet Name="books" EntityType="THUVIENSOModel.book" />
     <EntitySet Name="booktopics" EntityType="THUVIENSOModel.booktopic" />
     <AssociationSet Name="FK_ID2" Association="THUVIENSOModel.FK_ID2">
       <End Role="booktopic" EntitySet="booktopics" />
       <End Role="book" EntitySet="books" />
+    </AssociationSet>
+    <EntitySet Name="Customer_requirements" EntityType="THUVIENSOModel.Customer_requirements" />
+    <AssociationSet Name="FK_ID1" Association="THUVIENSOModel.FK_ID1">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Customer_requirements" EntitySet="Customer_requirements" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="book">
@@ -102,6 +83,30 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="book">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Customer_requirements">
+    <Key>
+      <PropertyRef Name="id1" />
+    </Key>
+    <Property Name="id" Type="Int32" />
+    <Property Name="id1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Request" Type="Int32" />
+    <Property Name="statuss" Type="Int32" />
+    <Property Name="dateyc" Type="DateTime" Precision="0" />
+    <Property Name="dateht" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="customer" Relationship="THUVIENSOModel.FK_ID1" FromRole="Customer_requirements" ToRole="customer" />
+  </EntityType>
+  <Association Name="FK_ID1">
+    <End Type="THUVIENSOModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="THUVIENSOModel.Customer_requirements" Role="Customer_requirements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customer_requirements">
         <PropertyRef Name="id" />
       </Dependent>
     </ReferentialConstraint>
